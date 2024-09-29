@@ -6,9 +6,9 @@ const Navbar = () => {
   const navigate = useNavigate();
 
   return (
-    <nav className='flex justify-between items-center border-2 pl-6 pt-2 pb-2 pr-10 fixed top-0 w-full bg-white z-50'>
+    <nav className='flex justify-between items-center border-2 pl-2 pt-2 pb-2 pr-6 fixed top-0 w-full bg-white z-50'>
       {/* Logo */}
-      <img src='/images/main_logo.png' onClick={() => {navigate("/")}} className='w-10 hover:cursor-pointer' alt='Logo' />
+      <img src='/images/main_logo.png' onClick={() => { navigate("/") }} className='w-10 hover:cursor-pointer' alt='Logo' />
 
       {/* Hamburger Menu Button (Visible on small screens) */}
       <div className='md:hidden'>
@@ -39,18 +39,25 @@ const Navbar = () => {
         className={`md:flex md:gap-20 ${isMenuOpen ? 'block' : 'hidden'} flex-col md:flex-row absolute md:relative top-14 right-0 md:top-0 md:right-0 md:w-auto w-full bg-gray-100 md:bg-transparent shadow-md md:shadow-none`}
       >
         <div className='flex flex-col md:flex-row items-center gap-6 md:gap-12 font-bold p-4 md:p-0'>
-          <a href='/' className='hover:text-yellow-600 hover:underline'>
-            Home
-          </a>
-          <a href='/about' className='hover:text-yellow-600 hover:underline'>
-            About
-          </a>
-          <a href='/services' className='hover:text-yellow-600 hover:underline'>
-            Services
-          </a>
-          <a href='/contactUs' className='hover:text-yellow-600 hover:underline'>
-            Contact
-          </a>
+          {/* Show all links on large screens */}
+          <div className='hidden md:flex gap-10'>
+            <a href='/' className='hover:text-yellow-600 hover:underline'>Home</a>
+            <a href='/about' className='hover:text-yellow-600 hover:underline'>About</a>
+            <a href='/services' className='hover:text-yellow-600 hover:underline'>Services</a>
+            <a href='/contactUs' className='hover:text-yellow-600 hover:underline'>Contact</a>
+          </div>
+
+          {/* Show Login and SignUp links on small screens */}
+          {isMenuOpen && (
+            <div className='flex flex-col md:flex-row gap-6 md:gap-12'>
+              <a href='/' className='hover:text-yellow-600 hover:underline'>Home</a>
+            <a href='/about' className='hover:text-yellow-600 hover:underline'>About</a>
+            <a href='/services' className='hover:text-yellow-600 hover:underline'>Services</a>
+            <a href='/contactUs' className='hover:text-yellow-600 hover:underline'>Contact</a>
+              <a href='/login' className='hover:text-yellow-600 hover:underline'>Login</a>
+              <a href='/signup' className='hover:text-yellow-600 hover:underline'>Sign Up</a>
+            </div>
+          )}
         </div>
 
         {/* Social Media Icons */}
