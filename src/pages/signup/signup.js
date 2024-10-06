@@ -1,31 +1,63 @@
 import React, { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faEnvelope,faUser, faPhone, faEye, faEyeSlash, faCodeBranch } from "@fortawesome/free-solid-svg-icons";
+import { faEnvelope, faUser, faPhone, faEye, faEyeSlash, faCodeBranch } from "@fortawesome/free-solid-svg-icons";
 import Layout from "../../components/Layout/Layout";
 import backgroundImage from "./login_back.jpg"; // Update with your own image if needed
+import axios from "axios";
 
 const SignUp = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
-  const [phone, setPhone] = useState("");
+  const [mobileNumber, setMobileNumber] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   const [referredBy, setReferredBy] = useState("");
   const [selectedPosition, setSelectedPosition] = useState("");
   const [formError, setFormError] = useState(null);
   const [successMessage, setSuccessMessage] = useState(null);
+  const [loading, setLoading] = useState(false); // New state for loading
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
-    if (!name || !email || !phone || !password) {
+    if (!name || !email || !mobileNumber || !password || !selectedPosition) {
       setFormError("Please fill in all fields.");
-    } else if (!/^\d{10}$/.test(phone)) {
+      return;
+    } else if (!/^\d{10}$/.test(mobileNumber)) {
       setFormError("Please enter a valid 10-digit mobile number.");
-    } else {
-      setFormError(null);
-      setSuccessMessage("Sign-up successful!");
-      console.log("Signing up with:", { name, email, phone, password, referredBy });
+      return;
+    }
+
+    setLoading(true); // Set loading to true when the form is submitted
+
+    try {
+      const response = await axios.post(`${process.env.REACT_APP_API_URL}/auth/signup`, {
+        name,
+        email,
+        mobileNumber,
+        password,
+        referredBy,
+        preferredSide: selectedPosition,
+      });
+
+      if (response.status === 201) {
+        setSuccessMessage(response.data.message);
+        setFormError(null);
+      } else {
+        setFormError("An unexpected error occurred.");
+      }
+
+      console.log("Signup successful:", response.data);
+    } catch (error) {
+      if (error.response) {
+        const errorMessage = error.response.data.message;
+        setFormError(errorMessage);
+      } else {
+        setFormError("An error occurred. Please try again.");
+      }
+      console.log("Error during signup:", error);
+    } finally {
+      setLoading(false); // Set loading to false after the request is completed
     }
   };
 
@@ -58,7 +90,7 @@ const SignUp = () => {
         >
           <h2 className="text-3xl text-center text-gray-700 font-bold mb-5">Sign Up</h2>
           <form onSubmit={handleSubmit} className="w-full space-y-5">
-          <div className="relative w-full">
+            <div className="relative w-full">
               <input
                 type="text"
                 value={name}
@@ -86,10 +118,10 @@ const SignUp = () => {
             <div className="relative w-full">
               <input
                 type="tel"
-                value={phone}
-                onChange={(e) => setPhone(e.target.value)}
+                value={mobileNumber}
+                onChange={(e) => setMobileNumber(e.target.value)}
                 className="w-full h-12 px-4 rounded-lg border-none bg-blue-50 shadow-lg focus:ring focus:outline-none focus:ring-blue-300 transition duration-300"
-                placeholder="Phone"
+                placeholder="Mobile Number"
                 required
               />
               <FontAwesomeIcon icon={faPhone} className="absolute right-4 top-1/2 transform -translate-y-1/2 text-gray-500" />
@@ -117,7 +149,7 @@ const SignUp = () => {
                 value={referredBy}
                 onChange={(e) => setReferredBy(e.target.value)}
                 className="w-full h-12 px-4 rounded-lg border-none bg-blue-50 shadow-lg focus:ring focus:outline-none focus:ring-blue-300 transition duration-300"
-                placeholder="Referral Code (Optional)"
+                placeholder="Referral Code"
               />
               <FontAwesomeIcon icon={faCodeBranch} className="absolute right-4 top-1/2 transform -translate-y-1/2 text-gray-500" />
             </div>
@@ -153,9 +185,10 @@ const SignUp = () => {
             {/* Submit Button */}
             <button
               type="submit"
-              className="w-full bg-blue-500 text-white rounded-lg py-2 shadow-lg transition duration-500 hover:bg-blue-600"
+              className={`w-full ${loading ? "bg-gray-500 cursor-not-allowed" : "bg-blue-500"} text-white rounded-lg py-2 shadow-lg transition duration-500 hover:bg-blue-600`}
+              disabled={loading} // Disable button when loading
             >
-              Proceed
+              {loading ? "Processing..." : "Proceed"}
             </button>
 
             {/* Success & Error Messages */}

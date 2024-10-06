@@ -16,6 +16,7 @@ import Refund from './components/walletRecharge/Refund';
 import IFSCDetails from './components/walletRecharge/IFSCDetails';
 import TransactionStatus from './components/walletRecharge/TransactionStatus';
 import AccountBalance from './components/walletRecharge/AccountBalance';
+import UserTree from './components/UserTree/UserTree';
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
      <Routes>
       <Route path='/' element={<HomePage/>}/>
       <Route path='/about' element={<About/>}/>
+      <Route path='/user-tree' element={<UserTree/>}/>
       <Route path='/services' element={<Services/>}/>
       <Route path='/contactUs' element={<ContactUs/>}/>
       <Route path='/login' element={<Login/>}/>
