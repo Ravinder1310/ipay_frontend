@@ -1,7 +1,3 @@
-
-
-
-
 import axios from "axios";
 import { useState, useContext, useEffect, createContext } from "react";
 
