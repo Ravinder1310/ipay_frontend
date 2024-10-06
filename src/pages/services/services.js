@@ -97,8 +97,8 @@ const Services = () => {
   return (
     <Layout>
     <div className='mb-20'>
-        <img className='h-[250px] sm:h-full' src='/images/services2.png'/>
-        <div className="flex items-center justify-center absolute top-[20%] left-[15%] sm:top-64 sm:left-[20%] bg-transparent text-white">
+        <img className='h-[250px] sm:h-full mt-16 sm:mt-0' src='/images/services2.png'/>
+        <div className="flex items-center justify-center absolute top-[25%] left-[15%] sm:top-64 sm:left-[20%] bg-transparent text-white">
       <TypeAnimation
         sequence={[
           'Welcome to ZBAZAAR!', // Text to display
@@ -121,7 +121,7 @@ const Services = () => {
       />
     </div>
     <div className='mt-14 w-[90%] m-auto'>
-        <h1 className='font-bold text-4xl'>Our Services</h1>
+        <h1 className='font-bold text-4xl text-white'>Our Services</h1>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 mt-10">
           {allServices.map((service, index) => (
             <div

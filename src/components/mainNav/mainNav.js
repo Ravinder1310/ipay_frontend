@@ -6,41 +6,23 @@ const Navbar = () => {
   const navigate = useNavigate();
 
   return (
-    <nav className='flex justify-between items-center border-2 pl-2 pt-2 pb-2 pr-6 fixed top-0 w-full bg-white z-50'>
+    <nav className='flex justify-between items-center pl-2 pt-2 pb-2 pr-6 fixed top-0 w-full bg-blue-800 z-50'>
       {/* Logo */}
       <img src='/images/main_logo.png' onClick={() => { navigate("/") }} className='w-10 hover:cursor-pointer' alt='Logo' />
 
       {/* Hamburger Menu Button (Visible on small screens) */}
-      <div className='md:hidden'>
-        <button
-          onClick={() => setIsMenuOpen(!isMenuOpen)}
-          className='focus:outline-none'
-        >
+      <div className='md:hidden' onClick={() => setIsMenuOpen(!isMenuOpen)}>
           {/* Hamburger Icon */}
-          <svg
-            className='w-6 h-6 text-black'
-            fill='none'
-            stroke='currentColor'
-            viewBox='0 0 24 24'
-            xmlns='http://www.w3.org/2000/svg'
-          >
-            <path
-              strokeLinecap='round'
-              strokeLinejoin='round'
-              strokeWidth='2'
-              d='M4 6h16M4 12h16M4 18h16'
-            ></path>
-          </svg>
-        </button>
+          <img src='/images/menu_all.png' className='w-[50px]' alt='error'/>
       </div>
 
       {/* Navigation Links */}
       <div
-        className={`md:flex md:gap-20 ${isMenuOpen ? 'block' : 'hidden'} flex-col md:flex-row absolute md:relative top-14 right-0 md:top-0 md:right-0 md:w-auto w-full bg-gray-100 md:bg-transparent shadow-md md:shadow-none`}
+        className={`md:flex md:gap-20 ${isMenuOpen ? 'block' : 'hidden'} flex-col md:flex-row absolute md:relative top-16 md:top-0 md:right-0 md:w-auto w-[55%] right-4 bg-gray-100 md:bg-transparent rounded-lg shadow-md md:shadow-none`}
       >
-        <div className='flex flex-col md:flex-row items-center gap-6 md:gap-12 font-bold p-4 md:p-0'>
+        <div className='flex flex-col md:flex-row items-center gap-6 md:gap-12 font-bold bg-yellow-200 sm:bg-transparent p-4 md:p-0 rounded-lg'>
           {/* Show all links on large screens */}
-          <div className='hidden md:flex gap-10'>
+          <div className='hidden md:flex gap-10 text-white '>
             <a href='/' className='hover:text-yellow-600 hover:underline'>Home</a>
             <a href='/about' className='hover:text-yellow-600 hover:underline'>About</a>
             <a href='/services' className='hover:text-yellow-600 hover:underline'>Services</a>
@@ -49,19 +31,19 @@ const Navbar = () => {
 
           {/* Show Login and SignUp links on small screens */}
           {isMenuOpen && (
-            <div className='flex flex-col md:flex-row gap-6 md:gap-12'>
-              <a href='/' className='hover:text-yellow-600 hover:underline'>Home</a>
-            <a href='/about' className='hover:text-yellow-600 hover:underline'>About</a>
-            <a href='/services' className='hover:text-yellow-600 hover:underline'>Services</a>
-            <a href='/contactUs' className='hover:text-yellow-600 hover:underline'>Contact</a>
-              <a href='/login' className='hover:text-yellow-600 hover:underline'>Login</a>
-              <a href='/signup' className='hover:text-yellow-600 hover:underline'>Sign Up</a>
+            <div className='flex flex-col md:flex-row gap-y-2 md:gap-12 w-full'>
+              <a href='/' className='hover:text-yellow-600 hover:underline border-2 border-yellow-500 py-2 w-full'>Home</a>
+            <a href='/about' className='hover:text-yellow-600 hover:underline border-2 border-yellow-500 py-2 w-full'>About</a>
+            <a href='/services' className='hover:text-yellow-600 hover:underline border-2 border-yellow-500 py-2 w-full'>Services</a>
+            <a href='/contactUs' className='hover:text-yellow-600 hover:underline border-2 border-yellow-500 py-2 w-full'>Contact</a>
+              <a href='/login' className='hover:text-yellow-600 hover:underline border-2 border-yellow-500 py-2 w-full'>Login</a>
+              <a href='/signup' className='hover:text-yellow-600 hover:underline border-2 border-yellow-500 py-2 w-full'>Sign Up</a>
             </div>
           )}
         </div>
 
         {/* Social Media Icons */}
-        <div className='flex justify-center md:justify-start gap-3 p-4 md:p-0'>
+        <div className='flex justify-center md:justify-start gap-3 p-4 md:p-0 bg-yellow-200 sm:bg-transparent rounded-lg'>
           <img
             src='/images/facebook.png'
             alt='facebook'

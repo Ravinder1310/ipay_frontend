@@ -6,7 +6,7 @@ const TopNav = () => {
  const navigate = useNavigate();
 
   return (
-    <div className='hidden md:flex bg-blue-900 text-white mt-[60px] justify-between pl-4 pr-6 pt-2 pb-2'>
+    <div className='hidden md:flex bg-blue-900 text-white mt-[56px] justify-between pl-4 pr-6 pt-2 pb-2'>
       <div className='flex gap-10'>
         <div className='flex items-center gap-4'>
           <img src='/images/loc.png' className='w-10 h-10' alt='error' />
