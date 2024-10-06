@@ -7,6 +7,8 @@ import ContactUs from './pages/contackUs/contactUs';
 import Services from './pages/services/services';
 import Login from './pages/login/login';
 import SignUp from './pages/signup/signup';
+import Recharge from './pages/Recharge';
+import FundTransfer from './components/fundTransfer/fundTransfer';
 
 function App() {
   return (
@@ -18,6 +20,8 @@ function App() {
       <Route path='/contactUs' element={<ContactUs/>}/>
       <Route path='/login' element={<Login/>}/>
       <Route path='/signup' element={<SignUp/>}/>
+      <Route path='/recharge-mobile' element={<Recharge/>}/>
+      <Route path='/fund-transfer' element={<FundTransfer/>}/>
      </Routes>
     </div>
   );

@@ -3,7 +3,7 @@ import React from "react";
 const ChooseUs = () => {
   return (
     <div className="flex flex-wrap mt-10 w-[90%] m-auto rounded-lg">
-      <div className="w-full md:w-[50%] bg-white sm:p-10 rounded-tl-lg rounded-bl-lg">
+      <div className="w-full md:w-[50%] bg-white  p-2 rounded-tr-lg rounded-tl-lg rounded-br-lg rounded-bl-lg sm:p-10 sm:rounded-tl-lg sm:rounded-bl-lg">
         <h1 className="text-5xl font-bold mt-10">Why Choose Us</h1>
         <p className="mt-10 text-gray-400">
           Effortless transactions and innovative solutions, backed by a
@@ -42,8 +42,8 @@ const ChooseUs = () => {
         </div>
       </div>
       <img
-        className="w-full md:w-[50%] h-[560px] rounded-tr-lg rounded-br-lg object-cover"
-        src="/images/join.png"
+        className="w-full hidden sm:block md:w-[50%] h-[560px] rounded-tr-lg rounded-br-lg object-cover"
+        src="/images/why.png"
         alt="error"
       />
     </div>

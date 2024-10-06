@@ -37,7 +37,7 @@ const Login = () => {
           backgroundPosition: "center",
         }}
       >
-        <div className="bg-transparent rounded-lg backdrop-blur-xl text-white shadow-md p-6 w-full max-w-sm">
+        <div className="bg-gray-300 rounded-lg text-black shadow-md p-6 w-[80%] sm:w-[28%]">
           <h2 className="text-2xl font-bold mb-4 text-center">Login</h2>
           <div className="flex justify-between p-5 px-10">
             <button
@@ -46,7 +46,7 @@ const Login = () => {
                 isEmailActive
                   ? "bg-red-600 text-white"
                   : "bg-gray-200 text-gray-700"
-              } hover:bg-red-500 focus:outline-none focus:ring-2 focus:ring-red-600 focus:ring-opacity-50 mr-2`}
+              } hover:bg-gray-500  hover:text-white focus:outline-none focus:ring-2 focus:ring-red-600 focus:ring-opacity-50 mr-2`}
             >
               Email
             </button>
@@ -56,7 +56,7 @@ const Login = () => {
                 !isEmailActive
                   ? "bg-red-600 text-white"
                   : "bg-gray-200 text-gray-700"
-              } hover:bg-red-500 focus:outline-none focus:ring-2 focus:ring-red-600 focus:ring-opacity-50`}
+              } hover:bg-gray-500 hover:text-white focus:outline-none focus:ring-2 focus:ring-red-600 focus:ring-opacity-50`}
             >
               Mobile
             </button>
@@ -77,7 +77,7 @@ const Login = () => {
                   value={email}
                   placeholder="Enter your working email"
                   onChange={(e) => setEmail(e.target.value)}
-                  className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                  className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block shadow-lg w-full p-2.5"
                   required
                 />
               </div>
@@ -94,7 +94,7 @@ const Login = () => {
                   id="mobile"
                   value={email} // Reusing the same state for mobile number
                   onChange={(e) => setEmail(e.target.value)}
-                  className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                  className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block shadow-lg w-full p-2.5"
                   placeholder="10-digit mobile number"
                   required
                 />
