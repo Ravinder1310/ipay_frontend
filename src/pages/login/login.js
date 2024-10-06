@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import backgroundImage from "./login_back.jpg";
 import Layout from "../../components/Layout/Layout";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
+import { useAuth } from "../../context/auth";
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -10,7 +12,8 @@ const Login = () => {
   const [error, setError] = useState(null);
   const [isEmailActive, setIsEmailActive] = useState(true); // Toggle between email and mobile input
   const [loading, setLoading] = useState(false); // Loading state
-
+  const navigate = useNavigate()
+  const [auth,setAuth] = useAuth()
   const toggleButton = () => {
     setIsEmailActive(!isEmailActive);
     setError(null); // Clear errors when toggling
@@ -50,15 +53,15 @@ const Login = () => {
 
       if (response.status === 200 && response.data.success) {
         setError(null);
-        // Optionally, store the token and user info
-        localStorage.setItem("token", response.data.token);
-        localStorage.setItem("user", JSON.stringify(response.data.user));
-
-        // Optionally, redirect the user to a dashboard or home page
-        // For example, using react-router:
-        // history.push('/dashboard');
-
-        // Display success message
+        setAuth({
+          user: response.data.user,
+          token: response.data.token,
+      });
+      localStorage.setItem('auth', JSON.stringify({
+          user: response.data.user,
+          token: response.data.token,
+      }));
+        navigate('/')
         console.log("Login successful:", response.data);
         // You can also set a success message state if you prefer
       } else {

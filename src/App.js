@@ -9,6 +9,7 @@ import Login from './pages/login/login';
 import SignUp from './pages/signup/signup';
 import Recharge from './pages/Recharge';
 import FundTransfer from './components/fundTransfer/fundTransfer';
+import UserTree from './components/UserTree/UserTree';
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
      <Routes>
       <Route path='/' element={<HomePage/>}/>
       <Route path='/about' element={<About/>}/>
+      <Route path='/user-tree' element={<UserTree/>}/>
       <Route path='/services' element={<Services/>}/>
       <Route path='/contactUs' element={<ContactUs/>}/>
       <Route path='/login' element={<Login/>}/>
