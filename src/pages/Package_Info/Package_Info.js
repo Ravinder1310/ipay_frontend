@@ -54,7 +54,7 @@ const Package_Info = () => {
       toast.success(`Congrats! You have bought the package (${name}) successfully.`);
 
       setTimeout(() => {
-        navigate("/users/user");
+        navigate("/users/user/packages");
         setLoading(false);
       }, 2000);
     } catch (error) {
