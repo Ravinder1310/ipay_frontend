@@ -86,7 +86,7 @@ const Recharge = () => {
       console.log("Plan Code:", operator.planCode);
 
       const response = await axios.post(
-        `${process.env.REACT_APP_API_URL}/api/recharge/get-plans`,
+        `${process.env.REACT_APP_API_URL}/recharge/get-plans`,
         {
           username,
           pwd,
@@ -188,7 +188,7 @@ const Recharge = () => {
       console.log("Form Data:", formData);
 
       const response = await axios.post(
-        `${process.env.REACT_APP_API_URL}/api/recharge/recharge`,
+        `${process.env.REACT_APP_API_URL}/recharge/recharge`,
         formData
       );
 
