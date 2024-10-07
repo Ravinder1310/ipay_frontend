@@ -24,9 +24,9 @@ const RechargeAndBill = () => {
       <Toaster />
 
       <h1 className="text-left mb-3 text-2xl font-bold text-white">Recharge & Bill Pay</h1>
-      <div className="flex flex-wrap border-2 rounded-lg gap-y-10 gap-x-4 sm:gap-x-10 bg-blue-300 shadow-2xl justify-center text-sm font-bold py-4 px-2">
+      <div className="flex flex-wrap border-2 rounded-lg gap-y-10 gap-x-4 sm:gap-x-6 bg-blue-300 shadow-2xl justify-center text-sm font-bold py-4 px-2">
         <div
-          className="hover:bg-gray-200 rounded-lg border hover:cursor-pointer  w-[90px] h-[120px] flex flex-col items-center justify-center"
+          className="hover:bg-gray-200 rounded-lg border hover:cursor-pointer  w-[90px] sm:w-[110px] h-[120px] flex flex-col items-center justify-center"
           onClick={() => {
             navigate("/recharge-mobile");
           }}
@@ -40,7 +40,7 @@ const RechargeAndBill = () => {
         </div>
 
         <div
-          className="hover:bg-gray-200 p-2 rounded-lg border hover:cursor-pointer w-[90px] h-[120px] flex flex-col items-center justify-center"
+          className="hover:bg-gray-200 p-2 rounded-lg border hover:cursor-pointer w-[90px] sm:w-[110px] h-[120px] flex flex-col items-center justify-center"
           onClick={handleToast}
         >
           <img
@@ -52,7 +52,7 @@ const RechargeAndBill = () => {
         </div>
 
         <div
-          className="hover:bg-gray-200 p-2 border rounded-lg hover:cursor-pointer  w-[90px] h-[120px] flex flex-col items-center justify-center"
+          className="hover:bg-gray-200 p-2 border rounded-lg hover:cursor-pointer  w-[90px] sm:w-[110px] h-[120px] flex flex-col items-center justify-center"
           onClick={handleToast}
         >
           <img
@@ -64,7 +64,7 @@ const RechargeAndBill = () => {
         </div>
 
         <div
-          className="hover:bg-gray-200 p-2 border rounded-lg hover:cursor-pointer  w-[90px] h-[120px] flex flex-col items-center justify-center"
+          className="hover:bg-gray-200 p-2 border-2 rounded-lg hover:cursor-pointer  w-[90px] sm:w-[110px] h-[120px] flex flex-col items-center justify-center"
           onClick={handleToast}
         >
           <img
@@ -76,7 +76,7 @@ const RechargeAndBill = () => {
         </div>
 
         <div
-          className="hover:bg-gray-200 p-2 border rounded-lg hover:cursor-pointer  w-[90px] h-[120px] flex flex-col items-center justify-center"
+          className="hover:bg-gray-200 p-2 border-2 rounded-lg hover:cursor-pointer  w-[90px] sm:w-[110px] h-[120px] flex flex-col items-center justify-center"
           onClick={handleToast}
         >
           <img
@@ -88,7 +88,7 @@ const RechargeAndBill = () => {
         </div>
 
         <div
-          className="hover:bg-gray-200 p-2 border rounded-lg hover:cursor-pointer  w-[90px] h-[120px] flex flex-col items-center justify-center"
+          className="hover:bg-gray-200 p-2 border-2 rounded-lg hover:cursor-pointer  w-[90px] sm:w-[110px] h-[120px] flex flex-col items-center justify-center"
           onClick={handleToast}
         >
           <img
@@ -100,7 +100,7 @@ const RechargeAndBill = () => {
         </div>
 
         <div
-          className="hover:bg-gray-200 p-2 border rounded-lg hover:cursor-pointer  w-[90px] h-[120px] flex flex-col items-center justify-center"
+          className="hover:bg-gray-200 p-2 border-2 rounded-lg hover:cursor-pointer  w-[90px] sm:w-[110px] h-[120px] flex flex-col items-center justify-center"
           onClick={handleToast}
         >
           <img
@@ -112,7 +112,7 @@ const RechargeAndBill = () => {
         </div>
 
         <div
-          className="hover:bg-gray-200 p-2 border rounded-lg hover:cursor-pointer  w-[90px] h-[120px] flex flex-col items-center justify-center"
+          className="hover:bg-gray-200 p-2 border-2 rounded-lg hover:cursor-pointer  w-[90px] sm:w-[110px] h-[120px] flex flex-col items-center justify-center"
           onClick={handleToast}
         >
           <img

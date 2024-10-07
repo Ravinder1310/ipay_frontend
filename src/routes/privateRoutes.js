@@ -6,7 +6,7 @@ import Spinner from '../components/spinner';
 
 const PrivateRoute = () => {
   const [ok, setOk] = useState(false);
-  const [auth] = useAuth(); // Ensure auth is used correctly
+  const [auth, setAuth] = useAuth(); // Ensure auth is used correctly
   const navigate = useNavigate(); // In case we need to redirect
   
   useEffect(() => {
@@ -25,6 +25,8 @@ const PrivateRoute = () => {
         
         if (res.data.ok) {
           setOk(true);
+          console.log(res);
+          
         } else {
           setOk(false);
           console.log(res);

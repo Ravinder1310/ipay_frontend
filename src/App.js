@@ -8,7 +8,7 @@ import Services from './pages/services/services';
 import Login from './pages/login/login';
 import SignUp from './pages/signup/signup';
 import Recharge from './pages/Recharge';
-import FundTransfer from './components/fundTransfer/fundTransfer';
+// import FundTransfer from './components/fundTransfer/fundTransfer';
 import ScrollToTop from './components/ScrollToTop';
 import AddBeneficiary from './components/walletRecharge/binaficiaryAccount';
 import RefundOTP from './components/walletRecharge/RefundOTP';
@@ -19,6 +19,11 @@ import AccountBalance from './components/walletRecharge/AccountBalance';
 import UserTree from './components/UserTree/UserTree';
 import PrivateRoute from './routes/privateRoutes';
 import Package from './pages/package/package';
+import SenderRegistration from './components/payout/SenderRegistration';
+import FundTransfer from './components/payout/FundTransfer';
+import OTPVerification from './components/payout/OTPVerification';
+import BeneficiaryRegistration from './components/payout/BeneficiaryRegistration';
+import GetCustomer from './components/payout/GetCustomer';
 
 function App() {
   return (
@@ -29,18 +34,21 @@ function App() {
       <Route path="/users" element={<PrivateRoute/>}>
       <Route path='user/fund-transfer' element={<FundTransfer/>}/>
       <Route path='user/add-beneficiary' element={<AddBeneficiary/>}/>
-      <Route path='user/fund-transfer' element={<FundTransfer/>}/>
+      {/* <Route path='user/fund-transfer' element={<FundTransfer/>}/> */}
       <Route path='user/refund-otp' element={<RefundOTP/>}/>
       <Route path='user/refund' element={<Refund/>}/>
       <Route path='user/ifsc-details' element={<IFSCDetails/>}/>
       <Route path='user/transaction-status' element={<TransactionStatus/>}/>
       <Route path='user/account-balance' element={<AccountBalance/>}/>
-      
-
       </Route>
       <Route path='/' element={<HomePage/>}/>
       <Route path='/about' element={<About/>}/>
       <Route path='/recharge-mobile' element={<Recharge/>}/>
+      <Route path="/register-sender" element={<SenderRegistration/>} />
+        <Route path="/fund-transfer" element={<FundTransfer/>} />
+        <Route path="/verify-otp" element={<OTPVerification/>} />
+        <Route path="/register-beneficiary" element={<BeneficiaryRegistration/>} />
+        <Route path="/get-customer" element={<GetCustomer/>} />
       <Route path='user/user-tree' element={<UserTree/>}/>
       <Route path='/packages' element={<Package/>}/>
       <Route path='/services' element={<Services/>}/>
