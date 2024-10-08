@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState ,useEffect} from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEnvelope, faUser, faPhone, faEye, faEyeSlash, faCodeBranch } from "@fortawesome/free-solid-svg-icons";
 import Layout from "../../components/Layout/Layout";
@@ -66,6 +66,19 @@ const SignUp = () => {
   const handlePositionSelect = (position) => {
     setSelectedPosition(position);
   };
+
+
+  useEffect(() => {
+    // Extract the referral code from the URL
+    const queryParams = new URLSearchParams(window.location.search);
+    const tempReferralCode = queryParams.get('referral');
+
+    // If referral code exists, set it in the referredBy field
+    if (tempReferralCode) {
+      setReferredBy(tempReferralCode);
+    }
+  }, []);
+
 
   return (
     <Layout>

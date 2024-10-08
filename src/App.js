@@ -24,6 +24,7 @@ import LevelIncomeTrxn from './components/LevelIncomeTrxn/LevelIncomeTrxn';
 import MatchingIncome from './components/MatchingIncome/MatchingIncome';
 import MyProfile from './pages/myProfile/profile';
 import RechargeIncome from './components/RechargeIncome/RechargeIncome';
+import Invitation from './components/Invitation/Invitation';
 
 function App() {
   return (
@@ -38,6 +39,7 @@ function App() {
         <Route path='user/refund-otp' element={<RefundOTP/>}/>
         <Route path='user/refund' element={<Refund/>}/>
         <Route path='user/recharge-mobile' element={<Recharge/>}/>
+        <Route path='user/invite' element={<Invitation/>}/>
         <Route path='user/recharge-income' element={<RechargeIncome/>}/>
         <Route path='user/ifsc-details' element={<IFSCDetails/>}/>
         <Route path='user/transaction-status' element={<TransactionStatus/>}/>
