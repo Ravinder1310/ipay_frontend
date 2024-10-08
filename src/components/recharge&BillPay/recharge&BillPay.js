@@ -30,7 +30,7 @@ const RechargeAndBill = () => {
         <div
           className="bg-gradient-to-br from-blue-400 to-purple-600 border-2 border-white rounded-xl shadow-2xl hover:shadow-[0px_20px_50px_rgba(0,0,0,0.4)] hover:scale-110 transform transition-all duration-500 ease-in-out w-[90px] sm:w-[110px] h-[100px] flex flex-col items-center justify-center cursor-pointer"
           onClick={() => {
-            navigate("/recharge-mobile");
+            navigate("/users/user/recharge-mobile");
           }}
         >
           {/* <div className="w-[50px] h-[50px] bg-white rounded-full flex items-center justify-center shadow-lg"> */}

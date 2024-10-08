@@ -15,7 +15,7 @@ const Recharge = () => {
   const [loadingPlans, setLoadingPlans] = useState(false); // State for handling "Get Plans" button loading
   const [rechargeResult, setRechargeResult] = useState(null); // State to store recharge success message
   const [showConfetti, setShowConfetti] = useState(false); // State for confetti
-  const [auth, setAuth] = setAuth()
+  const [auth, setAuth] = useAuth()
   // Mapping of operator names to their codes
   const operatorCodeMap = {
     Airtel: { planCode: "Airtel", rechargeCode: "MAL" },
