@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import Layout from "../../components/Layout/Layout";
 import axios from "axios";
-import { toast } from "react-hot-toast";
+import { toast, Toaster } from "react-hot-toast";
 import { useAuth } from "../../context/auth";
 
 const Package_Info = () => {
@@ -70,6 +70,7 @@ const Package_Info = () => {
 
   return (
     <Layout>
+      <Toaster />
       <div className="py-5 px-4 flex flex-col items-center">
         <h1 className="text-white font-bold text-4xl">{name}</h1>
         {/* Card Container */}
