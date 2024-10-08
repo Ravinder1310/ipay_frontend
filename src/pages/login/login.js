@@ -4,7 +4,7 @@ import Layout from "../../components/Layout/Layout";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../../context/auth";
-import { toast } from "react-hot-toast"; // Import react-hot-toast
+import { toast, Toaster } from "react-hot-toast"; // Import react-hot-toast
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -81,6 +81,7 @@ const Login = () => {
 
   return (
     <Layout>
+      <Toaster />
       <div
         className="bg-gray-100 h-screen flex justify-center items-center"
         style={{

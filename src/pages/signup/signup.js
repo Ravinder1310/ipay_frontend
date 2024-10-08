@@ -4,7 +4,7 @@ import { faEnvelope, faUser, faPhone, faEye, faEyeSlash, faCodeBranch } from "@f
 import Layout from "../../components/Layout/Layout";
 import backgroundImage from "./login_back.jpg"; // Update with your own image if needed
 import axios from "axios";
-import { toast } from "react-hot-toast"; // Import react-hot-toast
+import { toast, Toaster } from "react-hot-toast"; // Import react-hot-toast
 
 const SignUp = () => {
   const [name, setName] = useState("");
@@ -20,10 +20,10 @@ const SignUp = () => {
     e.preventDefault();
 
     if (!name || !email || !mobileNumber || !password || !selectedPosition) {
-      toast.error("Please fill in all fields."); // Notify user about incomplete fields
+      toast("Please fill in all fields."); // Notify user about incomplete fields
       return;
     } else if (!/^\d{10}$/.test(mobileNumber)) {
-      toast.error("Please enter a valid 10-digit mobile number."); // Notify user about invalid mobile number
+      toast("Please enter a valid 10-digit mobile number."); // Notify user about invalid mobile number
       return;
     }
 
@@ -40,18 +40,18 @@ const SignUp = () => {
       });
 
       if (response.status === 201) {
-        toast.success(response.data.message); // Notify user on success
+        toast(response.data.message); // Notify user on success
       } else {
-        toast.error("An unexpected error occurred."); // Notify user on unexpected error
+        toast("An unexpected error occurred."); // Notify user on unexpected error
       }
 
       console.log("Signup successful:", response.data);
     } catch (error) {
       if (error.response) {
         const errorMessage = error.response.data.message;
-        toast.error(errorMessage); // Notify user about specific error
+        toast(errorMessage); // Notify user about specific error
       } else {
-        toast.error("An error occurred. Please try again."); // Notify user on general error
+        toast("An error occurred. Please try again."); // Notify user on general error
       }
       console.log("Error during signup:", error);
     } finally {
@@ -69,6 +69,7 @@ const SignUp = () => {
 
   return (
     <Layout>
+      <Toaster />
       <div
         className="w-full h-[800px] sm:h-[700px] bg-blue-100 flex items-center justify-center"
         style={{
