@@ -3,6 +3,7 @@ import { Helmet } from "react-helmet";
 import TopNav from "../topNav/topNav";
 import MainNav from "../mainNav/mainNav";
 import Footer from "../footer/footer";
+import BottomNavbar from "../bottomNav/BottomNavbar";
 
 // import Footer from "./footer/footer";
 // import { Toaster } from "react-hot-toast";
@@ -25,6 +26,7 @@ const Layout = ({ children, title, description, keywords, author }) => {
         <MainNav/>
         {children}
         <Footer/>
+        <BottomNavbar/>
       </main>
     </div>
   );

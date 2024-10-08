@@ -70,8 +70,8 @@ const Package_Info = () => {
 
   return (
     <Layout>
-      <div className="py-10 px-4 flex flex-col items-center">
-        <h1 className="text-white font-bold text-4xl mt-10">{name}</h1>
+      <div className="py-5 px-4 flex flex-col items-center">
+        <h1 className="text-white font-bold text-4xl">{name}</h1>
         {/* Card Container */}
         <div className="flex flex-col border-2 border-white md:flex-row bg-gradient-to-r from-blue-600 to-purple-700 rounded-lg p-6 w-full max-w-4xl shadow-lg mt-10 transition-transform duration-300 transform hover:scale-105">
           {/* Image Container */}
