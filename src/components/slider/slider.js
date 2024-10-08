@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useAuth } from '../../context/auth';
 
 const ImageSlider = () => {
   const images = [
@@ -8,6 +9,7 @@ const ImageSlider = () => {
   ];
 
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [auth, setAuth] = useAuth();
 
   // Function to go to the next slide
   const nextSlide = () => {
@@ -28,7 +30,7 @@ const ImageSlider = () => {
   }, [currentIndex]);
 
   return (
-    <div className='relative w-full sm:h-[390px] overflow-hidden z-0 mt-14 sm:mt-0'>
+    <div className={`relative w-full sm:h-[390px] overflow-hidden z-0 mt-14  ${auth?.token ? "sm:mt-18" : "sm:mt-0"}`}>
       {/* Slider Images */}
       <div
         className='flex transition-transform duration-1000 ease-in-out'

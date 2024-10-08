@@ -1,9 +1,12 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useAuth } from '../../context/auth';
+import toast from 'react-hot-toast';
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isProfileDropdownOpen, setIsProfileDropdownOpen] = useState(false);
+  const [auth,setAuth] = useAuth()
   const navigate = useNavigate();
   const profileRef = useRef(null);
 
@@ -19,6 +22,27 @@ const Navbar = () => {
       document.removeEventListener('mousedown', handleClickOutside);
     };
   }, []);
+
+  const handleLogout = () => {
+    setAuth({
+      ...auth,
+      user: null,
+      token: "",
+    });
+    localStorage.removeItem("auth");
+    toast('Logout Successfully!', {
+      duration: 4000, // Duration in milliseconds
+      position: 'top-center', // Position of the toast
+      style: {
+        background: 'white',
+        color: 'black',
+      },
+      icon: '👏', // Add a custom icon
+    });
+    setTimeout(()=> {
+      navigate("/login");
+    },2000)
+  };
 
   return (
     <nav className='flex justify-between items-center pl-2 pt-2 pb-2 pr-6 fixed top-0 w-full bg-blue-800 z-50'>
@@ -61,7 +85,9 @@ const Navbar = () => {
             </a>
 
             {/* My Profile Dropdown */}
-            <div className='relative' ref={profileRef}>
+            {
+              auth?.token ? (
+<div className='relative' ref={profileRef}>
               <button
                 onClick={() => setIsProfileDropdownOpen(!isProfileDropdownOpen)}
                 className='flex items-center text-white hover:text-yellow-600 hover:underline focus:outline-none'
@@ -94,13 +120,14 @@ const Navbar = () => {
                     My Income
                   </a>
                   <a
-                    href='/packages'
+                    href='/users/user/packages'
                     className='block px-4 py-2 text-gray-800 hover:bg-gray-100'
                   >
                     Packages
                   </a>
                   <a
-                    href='/logout'
+                    href='/'
+                    onClick={handleLogout}
                     className='block px-4 py-2 text-gray-800 hover:bg-gray-100'
                   >
                     Logout
@@ -108,6 +135,11 @@ const Navbar = () => {
                 </div>
               )}
             </div>
+              ) : (
+                <></>
+              )
+            }
+            
           </div>
 
           {/* Show Login and SignUp links on small screens */}
@@ -137,7 +169,10 @@ const Navbar = () => {
               >
                 Contact
               </a>
-              <a
+              {
+                !auth?.token ? (
+                   <>
+                   <a
                 href='/login'
                 className='hover:text-yellow-600 hover:underline border-2 border-yellow-500 py-2 w-full'
               >
@@ -149,6 +184,19 @@ const Navbar = () => {
               >
                 Sign Up
               </a>
+                   </>
+                ):(
+                  <>
+                  <a
+                href='/'
+                className='hover:text-yellow-600 hover:underline border-2 border-yellow-500 py-2 w-full'
+              >
+                My Profile
+              </a>
+                  </>
+                )
+              }
+              
             </div>
           )}
         </div>

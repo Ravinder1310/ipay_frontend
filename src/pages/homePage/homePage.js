@@ -9,6 +9,7 @@ import OurDreams from '../../components/ourDreams/ourDreams'
 import FeaturesSection from '../../components/features/features'
 import TopNav from '../../components/topNav/topNav'
 import Slider2 from '../../components/sliderCube/Slider'
+import BottomNavbar from '../../components/bottomNav/BottomNavbar'
 
 const HomePage = () => {
   return (
@@ -22,6 +23,7 @@ const HomePage = () => {
       <ChooseUs/>
       <FeaturesSection/>
       <OurDreams/>
+      <BottomNavbar/>
       </div>
     </Layout>
 

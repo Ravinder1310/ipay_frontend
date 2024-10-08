@@ -9,7 +9,7 @@ const Spinner = ({ path = "login" }) => {
   useEffect(() => {
     const interval = setInterval(() => {
       setCount((prevVal) => --prevVal);
-    }, 3000);
+    }, 1000);
 
     count === 0 &&
       navigate(`/${path}`, {
