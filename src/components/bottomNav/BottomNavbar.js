@@ -20,7 +20,7 @@ const BottomNavbar = () => {
  };
 
   return (
-    <div className="fixed sm:hidden rounded-full bottom-3 left-2 sm:left-[26%] h-[80px] bg-white shadow-md w-[95%] sm:w-[50%]">
+    <div className="fixed sm:hidden rounded-full bottom-3 left-2 sm:left-[26%] h-[80px] bg-white shadow-md w-[95%] sm:w-[50%] z-20">
       <div className="flex justify-around items-center py-2">
 
         {/* Home Section */}

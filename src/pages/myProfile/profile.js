@@ -89,7 +89,7 @@ function MyProfile() {
 
   return (
     <Layout title={"My Profile - I-Pay"}>
-      <div className="text-white sm:w-2/5 mx-auto min-h-screen pb-24 bg-gradient-to-b from-purple-400 to-blue-500">
+      <div className="text-white sm:w-2/5 mx-auto min-h-screen pt-0 sm:pt-20  pb-24 bg-gradient-to-b from-purple-400 to-blue-500">
         {/* <div className="registerHeader p-4 px-6 text-white shadow-lg shadow-blue-400">
           <button onClick={() => navigate(-1)}>
             <img
@@ -220,6 +220,40 @@ function MyProfile() {
                 className="w-10 h-10 mr-4"
               />
               <p className="text-gray-700 font-bold text-lg">My Invitation</p>
+              <img
+                src={"/images/viewmore.png"}
+                alt="right arrow"
+                className="w-10 h-10 ml-auto"
+              />
+            </div>
+            <div
+              data-aos="fade-up-left"
+              className="bg-white hover:bg-sky-300 rounded-md p-3 shadow-md flex items-center cursor-pointer"
+              onClick={() => navigate("/users/user/matching-income")}
+            >
+              <img
+                src={"/images/matching.png"}
+                alt="invitation"
+                className="w-10 h-10 mr-4"
+              />
+              <p className="text-gray-700 font-bold text-lg">Matching Imcome</p>
+              <img
+                src={"/images/viewmore.png"}
+                alt="right arrow"
+                className="w-10 h-10 ml-auto"
+              />
+            </div>
+            <div
+              data-aos="fade-up-left"
+              className="bg-white hover:bg-sky-300 rounded-md p-3 shadow-md flex items-center cursor-pointer"
+              onClick={() => navigate("/users/user/level-income")}
+            >
+              <img
+                src={"/images/level.png"}
+                alt="invitation"
+                className="w-10 h-10 mr-4"
+              />
+              <p className="text-gray-700 font-bold text-lg">Level Income</p>
               <img
                 src={"/images/viewmore.png"}
                 alt="right arrow"
