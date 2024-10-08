@@ -23,7 +23,7 @@ const HomePage = () => {
       <ChooseUs/>
       <FeaturesSection/>
       <OurDreams/>
-      <BottomNavbar/>
+      
       </div>
     </Layout>
 

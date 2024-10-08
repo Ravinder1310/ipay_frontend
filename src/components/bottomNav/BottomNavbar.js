@@ -1,47 +1,59 @@
 import React from "react";
+import toast from "react-hot-toast";
+import { useNavigate } from "react-router-dom";
 
 const BottomNavbar = () => {
+
+ const navigate = useNavigate();
+
+ const handleToast = () => {
+  toast("Sorry for the inconvenience but currently We are working on this", {
+    duration: 4000,
+    position: "top-center",
+    style: {
+      background: "yellow",
+      color: "black",
+      fontWeight: 600,
+    },
+    icon: `😞`,
+  });
+ };
+
   return (
-    <div className="fixed rounded-full bottom-3 left-2 sm:left-[26%] bg-white shadow-md w-[95%] sm:w-[50%]">
+    <div className="fixed sm:hidden rounded-full bottom-3 left-2 sm:left-[26%] h-[80px] bg-white shadow-md w-[95%] sm:w-[50%]">
       <div className="flex justify-around items-center py-2">
 
-        {/* Wealth Section */}
-        <div className="flex flex-col items-center">
+        {/* Home Section */}
+        <div className="flex flex-col items-center" onClick={() => { navigate("/") }}>
           <div className="text-xl text-black">
-            💰 {/* Replace this with an appropriate icon */}
+            <img src="/images/home_logo.png" className="w-[40px]" alt="Home"/>
           </div>
-          <span className="text-xs font-medium text-black">Wealth</span>
         </div>
 
-        {/* Insurance Section */}
-        <div className="flex flex-col items-center">
-          <div className="text-xl text-black">
-            ☂️ {/* Replace this with an appropriate icon */}
-          </div>
-          <span className="text-xs font-medium text-black">Insurance</span>
+        {/* Packages Section */}
+        <div className="flex flex-col items-center" onClick={() => { navigate("/users/user/packages") }}>
+          <img src="/images/packages.png" className="w-[40px]" alt="Packages"/>
         </div>
 
         {/* QR Code Section (Center Button) */}
-        <div className="flex flex-col items-center bg-blue-600 p-3 rounded-full">
+        <div className="flex flex-col items-center bg-blue-600 p-3 rounded-full" onClick={handleToast}>
           <div className="text-2xl text-white">
-            ⬛ {/* Replace this with an appropriate icon */}
+            <img src="/images/qr_code.png" className="w-[40px]" alt="QR Code"/>
           </div>
         </div>
 
-        {/* Cashback Section */}
-        <div className="flex flex-col items-center">
+        {/* Recharge Section */}
+        <div className="flex flex-col items-center" onClick={() => { navigate("/users/user/recharge-mobile") }}>
           <div className="text-xl text-black">
-            💸 {/* Replace this with an appropriate icon */}
+            <img src="/images/rechrge.png" className="w-[40px]" alt="Recharge"/>
           </div>
-          <span className="text-xs font-medium text-black">Cashback</span>
         </div>
 
-        {/* Loan Section */}
-        <div className="flex flex-col items-center">
+        {/* Profile Section */}
+        <div className="flex flex-col items-center" onClick={() => { navigate("/users/user/my-profile") }}>
           <div className="text-xl text-black">
-            💵 {/* Replace this with an appropriate icon */}
+            <img src="/images/profile.png" className="w-[40px]" alt="Profile"/>
           </div>
-          <span className="text-xs font-medium text-black">Loan</span>
         </div>
 
       </div>

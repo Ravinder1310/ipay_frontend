@@ -27,9 +27,9 @@ const Package = () => {
 
   return (
     <Layout>
-      <div className="py-10">
-        <h1 className="text-white font-bold text-4xl mt-10">Joining Packages</h1>
-        <div className="flex flex-wrap justify-center gap-10 mt-20">
+      <div className="pt-10">
+        <h1 className="text-white font-bold text-4xl mt-0">Joining Packages</h1>
+        <div className="flex flex-wrap justify-center gap-10 mt-10">
           {/* SMART PACKAGE */}
           <div className="flex flex-col border-4 border-white items-center bg-gradient-to-r from-blue-600 via-indigo-700 to-purple-700 rounded-lg p-6 w-80 shadow-lg transform transition-transform duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-indigo-500/50 relative">
             <div className="absolute inset-0 rounded-lg bg-gradient-to-b from-transparent to-black opacity-10 pointer-events-none"></div>
