@@ -2,8 +2,8 @@ import React from "react";
 
 const MainTransfer = () => {
   return (
-    <div className="w-[95%] sm:w-[90%] m-auto mt-10 bg-transparent">
-      <h1 className="text-left mb-3 text-2xl font-bold text-white">
+    <div className="w-[95%] sm:w-[70%] m-auto mt-14 bg-transparent">
+      <h1 className="text-center mb-3 text-4xl font-bold text-white">
         Money Transfer
       </h1>
       <div className="flex flex-wrap border-2 rounded-lg gap-y-4 gap-x-2 bg-blue-300 shadow-2xl justify-between px-1 sm:px-8 py-4">
