@@ -4,19 +4,19 @@ import Layout from "../../components/Layout/Layout";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../../context/auth";
+import { toast } from "react-hot-toast"; // Import react-hot-toast
 
 const Login = () => {
   const [email, setEmail] = useState("");
-  const [mobileNumber, setMobileNumber] = useState(""); // Separate state for mobile number
+  const [mobileNumber, setMobileNumber] = useState("");
   const [password, setPassword] = useState("");
-  const [error, setError] = useState(null);
-  const [isEmailActive, setIsEmailActive] = useState(true); // Toggle between email and mobile input
-  const [loading, setLoading] = useState(false); // Loading state
-  const navigate = useNavigate()
-  const [auth,setAuth] = useAuth()
+  const [isEmailActive, setIsEmailActive] = useState(true);
+  const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
+  const [auth, setAuth] = useAuth();
+
   const toggleButton = () => {
     setIsEmailActive(!isEmailActive);
-    setError(null); // Clear errors when toggling
   };
 
   const handleSubmit = async (e) => {
@@ -25,15 +25,15 @@ const Login = () => {
     // Basic Frontend Validation
     if (isEmailActive) {
       if (email.trim() === "" || password.trim() === "") {
-        setError("Please fill in all fields.");
+        toast.error("Please fill in all fields.");
         return;
       }
     } else {
       if (mobileNumber.trim() === "" || password.trim() === "") {
-        setError("Please fill in all fields.");
+        toast.error("Please fill in all fields.");
         return;
       } else if (!/^\d{10}$/.test(mobileNumber)) {
-        setError("Please enter a valid 10-digit mobile number.");
+        toast.error("Please enter a valid 10-digit mobile number.");
         return;
       }
     }
@@ -41,7 +41,6 @@ const Login = () => {
     setLoading(true); // Start loading
 
     try {
-      // Prepare payload based on active input
       const payload = isEmailActive
         ? { email, password }
         : { mobileNumber, password };
@@ -52,26 +51,24 @@ const Login = () => {
       );
 
       if (response.status === 200 && response.data.success) {
-        setError(null);
         setAuth({
           user: response.data.user,
           token: response.data.token,
-      });
-      localStorage.setItem('auth', JSON.stringify({
+        });
+        localStorage.setItem("auth", JSON.stringify({
           user: response.data.user,
           token: response.data.token,
-      }));
-        navigate('/')
-        console.log("Login successful:", response.data);
-        // You can also set a success message state if you prefer
+        }));
+        toast.success("Login successful!"); // Toast for success
+        navigate("/");
       } else {
-        setError("An unexpected error occurred.");
+        toast.error("An unexpected error occurred."); // Toast for error
       }
     } catch (err) {
       if (err.response && err.response.data && err.response.data.message) {
-        setError(err.response.data.message);
+        toast.error(err.response.data.message); // Toast for specific error messages
       } else {
-        setError("An error occurred. Please try again.");
+        toast.error("An error occurred. Please try again.");
       }
       console.error("Login error:", err);
     } finally {
@@ -114,7 +111,6 @@ const Login = () => {
             </button>
           </div>
           <form onSubmit={handleSubmit}>
-            {/* Conditionally render input based on selected option */}
             {isEmailActive ? (
               <div className="mb-4">
                 <label
@@ -168,9 +164,6 @@ const Login = () => {
                 required
               />
             </div>
-            {error && (
-              <div className="text-red-500 text-sm mb-4">{error}</div>
-            )}
             <button
               type="submit"
               className={`text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center ${

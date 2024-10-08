@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import Layout from "../../components/Layout/Layout";
 import axios from "axios";
-import { toast } from "react-toastify";
+import { toast } from "react-hot-toast";
 import { useAuth } from "../../context/auth";
 
 const Package_Info = () => {
@@ -24,7 +24,7 @@ const Package_Info = () => {
     const itemPrice = parseFloat(price.replace("₹", "").replace(",", ""));
     
     if (user?.rechargeWallet < itemPrice) {
-      toast.error("Insufficient Balance! Please recharge your wallet first");
+      toast("Insufficient Balance! Please recharge your wallet first");
       setLoading(false);
       return;
     }
@@ -60,9 +60,9 @@ const Package_Info = () => {
     } catch (error) {
       console.error(error);
       if (error.response && error.response.data && error.response.data.error) {
-        toast.error(error.response.data.error);
+        toast(error.response.data.error);
       } else {
-        toast.error("Something went wrong. Please try again.");
+        toast("Something went wrong. Please try again.");
       }
       setLoading(false);
     }

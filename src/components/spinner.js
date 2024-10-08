@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
+import Layout from "./Layout/Layout";
 
 const Spinner = ({ path = "login" }) => {
   const [count, setCount] = useState(4);
@@ -19,16 +20,15 @@ const Spinner = ({ path = "login" }) => {
   }, [count, navigate, location, path]);
 
   return (
-    <>
-      <div style={{ textAlign:"center",width:"20%", margin:"auto",marginTop:"100px" }}>
-        {" "}
+    <Layout>
+      <div className="text-center bg-[#1d1f38] h-screen pt-28">
         <img
+        className="m-auto"
           width={"300px"}
-          height={"300px"}
-          src="/images/spinner-unscreen.gif"
+          src="/images/spiral.gif"
         />
       </div>
-    </>
+    </Layout>
   );
 };
 

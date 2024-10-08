@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../../context/auth";
-import { toast } from "react-toastify";
+import { toast } from "react-hot-toast";
 import axios from "axios";
 import AOS from "aos";
 import "aos/dist/aos.css";
@@ -21,7 +21,7 @@ function MyProfile() {
     });
     localStorage.removeItem("auth");
     navigate("/login");
-    toast.success("Logout successfully");
+    toast("Logout successfully");
   };
 
   const getUser = async () => {
@@ -62,11 +62,11 @@ function MyProfile() {
 
         setUser(res.data);
       } else {
-        toast.error("Failed to retrieve user profile");
+        toast("Failed to retrieve user profile");
       }
     } catch (error) {
       console.log(error);
-      toast.error("Something went wrong");
+      toast("Something went wrong");
     }
   };
 
@@ -194,7 +194,7 @@ function MyProfile() {
             <div
               data-aos="fade-up-right"
               className="bg-white hover:bg-sky-300 rounded-md p-3 shadow-md flex items-center cursor-pointer"
-              onClick={() => navigate("/")}
+              onClick={() => navigate("/users/user/tree")}
             >
               <img
                 src={"/images/myteam.png"}
@@ -212,7 +212,7 @@ function MyProfile() {
             <div
               data-aos="fade-up-left"
               className="bg-white hover:bg-sky-300 rounded-md p-3 shadow-md flex items-center cursor-pointer"
-              onClick={() => navigate("/users/user/invitation")}
+              onClick={() => navigate("/")}
             >
               <img
                 src={"/images/invite.png"}

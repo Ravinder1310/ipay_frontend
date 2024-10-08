@@ -4,6 +4,7 @@ import { faEnvelope, faUser, faPhone, faEye, faEyeSlash, faCodeBranch } from "@f
 import Layout from "../../components/Layout/Layout";
 import backgroundImage from "./login_back.jpg"; // Update with your own image if needed
 import axios from "axios";
+import { toast } from "react-hot-toast"; // Import react-hot-toast
 
 const SignUp = () => {
   const [name, setName] = useState("");
@@ -13,18 +14,16 @@ const SignUp = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [referredBy, setReferredBy] = useState("");
   const [selectedPosition, setSelectedPosition] = useState("");
-  const [formError, setFormError] = useState(null);
-  const [successMessage, setSuccessMessage] = useState(null);
   const [loading, setLoading] = useState(false); // New state for loading
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     if (!name || !email || !mobileNumber || !password || !selectedPosition) {
-      setFormError("Please fill in all fields.");
+      toast.error("Please fill in all fields."); // Notify user about incomplete fields
       return;
     } else if (!/^\d{10}$/.test(mobileNumber)) {
-      setFormError("Please enter a valid 10-digit mobile number.");
+      toast.error("Please enter a valid 10-digit mobile number."); // Notify user about invalid mobile number
       return;
     }
 
@@ -41,19 +40,18 @@ const SignUp = () => {
       });
 
       if (response.status === 201) {
-        setSuccessMessage(response.data.message);
-        setFormError(null);
+        toast.success(response.data.message); // Notify user on success
       } else {
-        setFormError("An unexpected error occurred.");
+        toast.error("An unexpected error occurred."); // Notify user on unexpected error
       }
 
       console.log("Signup successful:", response.data);
     } catch (error) {
       if (error.response) {
         const errorMessage = error.response.data.message;
-        setFormError(errorMessage);
+        toast.error(errorMessage); // Notify user about specific error
       } else {
-        setFormError("An error occurred. Please try again.");
+        toast.error("An error occurred. Please try again."); // Notify user on general error
       }
       console.log("Error during signup:", error);
     } finally {
@@ -192,8 +190,7 @@ const SignUp = () => {
             </button>
 
             {/* Success & Error Messages */}
-            {successMessage && <p className="text-center text-green-500 mt-3">{successMessage}</p>}
-            {formError && <p className="text-center text-red-500 mt-3">{formError}</p>}
+            {/* These messages are now handled via toast notifications. */}
 
             {/* Login Link */}
             <p className="text-center text-gray-600 mt-5">

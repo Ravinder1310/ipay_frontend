@@ -283,7 +283,7 @@ const Recharge = () => {
         </div>
       )}
 
-      <div className="w-full md:w-[100%] lg:w-[100%] m-auto pt-20 bg-blue-600 h-[700px] sm:pt-10">
+      <div className="w-full md:w-[100%] lg:w-[100%] sm:mt-14 m-auto pt-20 bg-blue-600 h-[700px] sm:pt-10">
         {!selectedPlan && (
           <h2 className="text-2xl font-bold text-center mb-6 text-white">
             Check Available Plans
