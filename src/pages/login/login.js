@@ -60,7 +60,10 @@ const Login = () => {
           token: response.data.token,
         }));
         toast.success("Login successful!"); // Toast for success
-        navigate("/");
+        setTimeout(() => {
+          navigate("/");
+        },2000)
+        
       } else {
         toast.error("An unexpected error occurred."); // Toast for error
       }
