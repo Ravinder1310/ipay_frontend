@@ -3,6 +3,7 @@ import Layout from "../components/Layout/Layout";
 import axios from "axios";
 import toast, { Toaster } from "react-hot-toast";
 import Confetti from "react-confetti"; // Import Confetti
+import { useAuth } from "../context/auth";
 
 const Recharge = () => {
   const [number, setNumber] = useState("");
@@ -14,7 +15,7 @@ const Recharge = () => {
   const [loadingPlans, setLoadingPlans] = useState(false); // State for handling "Get Plans" button loading
   const [rechargeResult, setRechargeResult] = useState(null); // State to store recharge success message
   const [showConfetti, setShowConfetti] = useState(false); // State for confetti
-
+  const [auth, setAuth] = setAuth()
   // Mapping of operator names to their codes
   const operatorCodeMap = {
     Airtel: { planCode: "Airtel", rechargeCode: "MAL" },
@@ -178,6 +179,7 @@ const Recharge = () => {
       pwd,
       operatorcode: operator.rechargeCode, // Use the rechargeCode
       number,
+      userId:auth?.user?.id,
       amount: selectedPlan.mrp,
       client_id: Math.floor(10000000 + Math.random() * 90000000).toString(),
     };

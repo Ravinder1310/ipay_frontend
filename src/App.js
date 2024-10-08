@@ -20,6 +20,8 @@ import UserTree from './components/UserTree/UserTree';
 import PrivateRoute from './routes/privateRoutes';
 import Package from './pages/package/package';
 import Package_Info from './pages/Package_Info/Package_Info';
+import LevelIncomeTrxn from './components/LevelIncomeTrxn/LevelIncomeTrxn';
+import MatchingIncome from './components/MatchingIncome/MatchingIncome';
 
 function App() {
   return (
@@ -36,6 +38,8 @@ function App() {
         <Route path='user/ifsc-details' element={<IFSCDetails/>}/>
         <Route path='user/transaction-status' element={<TransactionStatus/>}/>
         <Route path='user/account-balance' element={<AccountBalance/>}/>
+        <Route path='user/level-income' element={<LevelIncomeTrxn/>}/>
+        <Route path='user/matching-income' element={<MatchingIncome/>}/>
         <Route path='user/tree' element={<UserTree/>}/>
         <Route path='user/packages' element={<Package/>}/>
         <Route path='user/package-details' element={<Package_Info/>}/>

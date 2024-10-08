@@ -24,7 +24,7 @@ console.log("root user id ", rootUserId);
       return {
         name: 'You', // Display "You" for the root user
         attributes: {
-          isActive: user.isActive ? 'Active' : 'Inactive',
+          isActive: user.active ? 'Active' : 'Inactive',
           earningWallet: user.earningWallet,
         },
         children: [
@@ -41,7 +41,7 @@ console.log("root user id ", rootUserId);
         // isActive: user.isActive,
         earningWallet: user.earningWallet,
         rank: user.rank,
-        isActive: user.isActive ? 'Active' : 'Inactive',
+        isActive: user.active ? 'Active' : 'Inactive',
       },
       children: [
         user.leftChild ? buildTree(users, user.leftChild) : null,
