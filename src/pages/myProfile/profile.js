@@ -177,7 +177,7 @@ function MyProfile() {
             <div
               data-aos="fade-up-right"
               className="bg-white hover:bg-sky-300 rounded-md p-3 shadow-md flex items-center cursor-pointer"
-              onClick={() => navigate("/users/user/contact-manager")}
+              onClick={() => navigate("/")}
             >
               <img
                 src={"/images/contactmg.png"}
@@ -191,6 +191,23 @@ function MyProfile() {
                 className="w-10 h-10 ml-auto"
               />
             </div>
+            <div
+              data-aos="fade-up-right"
+              className="bg-white hover:bg-sky-300 rounded-md p-3 shadow-md flex items-center cursor-pointer"
+              onClick={() => navigate("/")}
+            >
+              <img
+                src={"/images/myteam.png"}
+                alt="customer support"
+                className="w-10 h-10 mr-4"
+              />
+              <p className="text-gray-700 font-bold text-lg">My Team</p>
+              <img
+                src={"/images/viewmore.png"}
+                alt="right arrow"
+                className="w-10 h-10 ml-auto"
+              />
+            </div>
 
             <div
               data-aos="fade-up-left"
@@ -198,7 +215,7 @@ function MyProfile() {
               onClick={() => navigate("/users/user/invitation")}
             >
               <img
-                src={"/images/invitation.png"}
+                src={"/images/invite.png"}
                 alt="invitation"
                 className="w-10 h-10 mr-4"
               />
