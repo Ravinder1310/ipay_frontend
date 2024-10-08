@@ -120,16 +120,28 @@ const Navbar = () => {
                 {isProfileDropdownOpen && (
                   <div className="absolute right-0 left-12 top-6 mt-2 w-48 bg-white rounded-md shadow-lg z-50">
                     <a
-                      href="/profile"
+                      href="/users/user/my-profile"
                       className="block px-4 py-2 text-gray-800 hover:bg-gray-100"
                     >
                       Profile
                     </a>
                     <a
-                      href="/my-income"
+                      href="/users/user/matching-income"
                       className="block px-4 py-2 text-gray-800 hover:bg-gray-100"
                     >
-                      My Income
+                      Matching Income
+                    </a>
+                    <a
+                      href="/users/user/level-income"
+                      className="block px-4 py-2 text-gray-800 hover:bg-gray-100"
+                    >
+                      Level Income
+                    </a>
+                    <a
+                      href="/users/user/tree"
+                      className="block px-4 py-2 text-gray-800 hover:bg-gray-100"
+                    >
+                      My Team
                     </a>
                     <a
                       href="/users/user/packages"
