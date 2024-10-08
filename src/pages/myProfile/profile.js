@@ -212,14 +212,14 @@ function MyProfile() {
             <div
               data-aos="fade-up-left"
               className="bg-white hover:bg-sky-300 rounded-md p-3 shadow-md flex items-center cursor-pointer"
-              onClick={() => navigate("/")}
+              onClick={() => navigate("/users/user/invite")}
             >
               <img
                 src={"/images/invite.png"}
                 alt="invitation"
                 className="w-10 h-10 mr-4"
               />
-              <p className="text-gray-700 font-bold text-lg">My Invitation</p>
+              <p className="text-gray-700 font-bold text-lg">Invitation</p>
               <img
                 src={"/images/viewmore.png"}
                 alt="right arrow"
