@@ -14,7 +14,7 @@ const NewNavbar = () => {
 
   return (
     <>
-      <div className={`${auth?.token ? 'fixed flex justify-between  z-50 bg-white' : 'hidden'}`}>
+      <div className={`${auth?.token ? ' flex justify-between  z-50 bg-white' : 'hidden'}`}>
         <img src='/images/main_logo.png' className='w-20 h-14' alt='error' />
         <img
           src='/images/new_menu.png'

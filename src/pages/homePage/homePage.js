@@ -10,11 +10,13 @@ import FeaturesSection from '../../components/features/features'
 import TopNav from '../../components/topNav/topNav'
 import Slider2 from '../../components/sliderCube/Slider'
 import BottomNavbar from '../../components/bottomNav/BottomNavbar'
+import NewNavbar from '../../components/NewNavbar/newNavbar'
 
 const HomePage = () => {
   return (
     <Layout>
-      <div className='bg-blue-500'>
+      <div className=''>
+        <NewNavbar/>
       <ImageSlider/>
       <Marquee/>
       <MainTransfer/>
@@ -23,7 +25,6 @@ const HomePage = () => {
       <ChooseUs/>
       <FeaturesSection/>
       <OurDreams/>
-      
       </div>
     </Layout>
 

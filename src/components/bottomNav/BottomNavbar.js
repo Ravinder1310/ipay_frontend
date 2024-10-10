@@ -1,6 +1,7 @@
 import React from "react";
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
+import { FaPhone, FaHome, FaIdCard, FaEdit, FaUniversity, FaImages, FaFilePdf, FaKey, FaExchangeAlt, FaTimes } from 'react-icons/fa';
 
 const BottomNavbar = () => {
 
@@ -20,13 +21,14 @@ const BottomNavbar = () => {
  };
 
   return (
-    <div className="fixed sm:hidden rounded-full bottom-3 left-2 sm:left-[26%] h-[80px] bg-white shadow-md w-[95%] sm:w-[50%] z-20">
+    <div className="fixed sm:hidden bottom-0 sm:left-[26%] h-[80px] bg-white shadow-md w-full z-20">
       <div className="flex justify-around items-center py-2">
 
         {/* Home Section */}
         <div className="flex flex-col items-center" onClick={() => { navigate("/") }}>
-          <div className="text-xl text-black">
-            <img src="/images/home_logo.png" className="w-[40px]" alt="Home"/>
+          <div className="text-xl text-black text-center">
+            <FaHome className="m-auto"/>
+            <p>Home</p>
           </div>
         </div>
 

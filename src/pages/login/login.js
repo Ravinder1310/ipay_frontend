@@ -4,46 +4,29 @@ import Layout from "../../components/Layout/Layout";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../../context/auth";
-import { toast, Toaster } from "react-hot-toast"; // Import react-hot-toast
+import { toast, Toaster } from "react-hot-toast";
 
 const Login = () => {
-  const [email, setEmail] = useState("");
   const [mobileNumber, setMobileNumber] = useState("");
   const [password, setPassword] = useState("");
-  const [isEmailActive, setIsEmailActive] = useState(true);
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
   const [auth, setAuth] = useAuth();
 
-  const toggleButton = () => {
-    setIsEmailActive(!isEmailActive);
-  };
-
   const handleSubmit = async (e) => {
     e.preventDefault();
-
-    // Basic Frontend Validation
-    if (isEmailActive) {
-      if (email.trim() === "" || password.trim() === "") {
-        toast.error("Please fill in all fields.");
-        return;
-      }
-    } else {
-      if (mobileNumber.trim() === "" || password.trim() === "") {
-        toast.error("Please fill in all fields.");
-        return;
-      } else if (!/^\d{10}$/.test(mobileNumber)) {
-        toast.error("Please enter a valid 10-digit mobile number.");
-        return;
-      }
+    if (mobileNumber.trim() === "" || password.trim() === "") {
+      toast.error("Please fill in all fields.");
+      return;
+    } else if (!/^\d{10}$/.test(mobileNumber)) {
+      toast.error("Please enter a valid 10-digit mobile number.");
+      return;
     }
 
     setLoading(true); // Start loading
 
     try {
-      const payload = isEmailActive
-        ? { email, password }
-        : { mobileNumber, password };
+      const payload = { mobileNumber, password };
 
       const response = await axios.post(
         `${process.env.REACT_APP_API_URL}/auth/login`,
@@ -55,21 +38,23 @@ const Login = () => {
           user: response.data.user,
           token: response.data.token,
         });
-        localStorage.setItem("auth", JSON.stringify({
-          user: response.data.user,
-          token: response.data.token,
-        }));
-        toast.success("Login successful!"); // Toast for success
+        localStorage.setItem(
+          "auth",
+          JSON.stringify({
+            user: response.data.user,
+            token: response.data.token,
+          })
+        );
+        toast.success("Login successful!");
         setTimeout(() => {
           navigate("/");
-        },2000)
-        
+        }, 2000);
       } else {
-        toast.error("An unexpected error occurred."); // Toast for error
+        toast.error("An unexpected error occurred.");
       }
     } catch (err) {
       if (err.response && err.response.data && err.response.data.message) {
-        toast.error(err.response.data.message); // Toast for specific error messages
+        toast.error(err.response.data.message);
       } else {
         toast.error("An error occurred. Please try again.");
       }
@@ -80,115 +65,95 @@ const Login = () => {
   };
 
   return (
-    <Layout>
+    <div
+      className="h-screen sm:h-auto flex justify-center items-center sm:pb-10"
+      style={{
+        backgroundColor: "#ed7e31", // Red background color
+      }}
+    >
       <Toaster />
-      <div
-        className="bg-gray-100 h-screen flex justify-center items-center"
-        style={{
-          backgroundImage: `url(${backgroundImage})`,
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-        }}
-      >
-        <div className="bg-gray-300 rounded-lg text-black shadow-md p-6 w-[80%] sm:w-[28%]">
-          <h2 className="text-2xl font-bold mb-4 text-center">Login</h2>
-          <div className="flex justify-between p-5 px-10">
-            <button
-              onClick={toggleButton}
-              className={`flex-1 px-4 py-2 rounded-lg transition-colors duration-300 ${
-                isEmailActive
-                  ? "bg-red-600 text-white"
-                  : "bg-gray-200 text-gray-700"
-              } hover:bg-gray-500 hover:text-white focus:outline-none focus:ring-2 focus:ring-red-600 focus:ring-opacity-50 mr-2`}
+      <div className="bg-white rounded-xl text-black shadow-lg p-6 w-[85%] sm:w-[32%] h-[540px] sm:h-[600px]  sm:mt-8">
+        {/* Zed Pay Logo */}
+        <div className="flex justify-center mb-4">
+          <img
+            src="/images/main_logo.png" // Use your logo image
+            alt="I Pay Logo"
+            className="w-28 h-28 cursor-pointer"
+            onClick={() => {navigate("/")}}
+          />
+        </div>
+        <form onSubmit={handleSubmit}>
+          <div className="mb-4">
+            <label
+              htmlFor="mobile"
+              className="block text-sm font-medium text-left mb-2"
             >
-              Email
-            </button>
-            <button
-              onClick={toggleButton}
-              className={`flex-1 px-4 py-2 rounded-lg transition-colors duration-300 ${
-                !isEmailActive
-                  ? "bg-red-600 text-white"
-                  : "bg-gray-200 text-gray-700"
-              } hover:bg-gray-500 hover:text-white focus:outline-none focus:ring-2 focus:ring-red-600 focus:ring-opacity-50`}
-            >
-              Mobile
-            </button>
+              Mobile Number
+            </label>
+            <input
+              type="tel"
+              id="mobile"
+              value={mobileNumber}
+              onChange={(e) => setMobileNumber(e.target.value)}
+              className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-full focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+              placeholder="Enter User ID or Mobile Number"
+              required
+            />
           </div>
-          <form onSubmit={handleSubmit}>
-            {isEmailActive ? (
-              <div className="mb-4">
-                <label
-                  htmlFor="email"
-                  className="block text-sm font-medium text-left mb-2"
-                >
-                  Email
-                </label>
-                <input
-                  type="email"
-                  id="email"
-                  value={email}
-                  placeholder="Enter your working email"
-                  onChange={(e) => setEmail(e.target.value)}
-                  className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block shadow-lg w-full p-2.5"
-                  required
-                />
-              </div>
-            ) : (
-              <div className="mb-4">
-                <label
-                  htmlFor="mobile"
-                  className="block text-sm font-medium text-left mb-2"
-                >
-                  Mobile Number
-                </label>
-                <input
-                  type="tel"
-                  id="mobile"
-                  value={mobileNumber}
-                  onChange={(e) => setMobileNumber(e.target.value)}
-                  className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block shadow-lg w-full p-2.5"
-                  placeholder="10-digit mobile number"
-                  required
-                />
-              </div>
-            )}
-            <div className="mb-4">
-              <label
-                htmlFor="password"
-                className="block text-sm font-medium text-left mb-2"
-              >
-                Password
-              </label>
-              <input
-                type="password"
-                id="password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
-                required
-              />
-            </div>
-            <button
-              type="submit"
-              className={`text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center ${
-                loading
-                  ? "bg-gray-500 cursor-not-allowed"
-                  : "bg-blue-700 hover:bg-blue-800"
-              }`}
-              disabled={loading} // Disable button when loading
+          <div className="mb-4">
+            <label
+              htmlFor="password"
+              className="block text-sm font-medium text-left mb-2"
             >
-              {loading ? "Processing..." : "Login"}
-            </button>
-          </form>
-          <div className="text-sm text-gray-500 mt-4 text-center">
-            Don't have an account?{" "}
-            <a href="/signup" className="text-blue-600 hover:underline">
-              Sign up
+              Password
+            </label>
+            <input
+              type="password"
+              id="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-full focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+              placeholder="Enter Password"
+              required
+            />
+          </div>
+          <div className="flex justify-between text-sm mb-4">
+            <div></div>
+            <a href="/forgot-tpin" className="text-gray-600 hover:text-blue-600">
+              Forgot Password
             </a>
           </div>
+          <button
+            type="submit"
+            className={`w-full text-white bg-red-600 hover:bg-red-700 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-full text-sm px-5 py-2.5 text-center shadow-md ${
+              loading ? "bg-gray-500 cursor-not-allowed" : ""
+            }`}
+            disabled={loading}
+          >
+            {loading ? "Processing..." : "Login"}
+          </button>
+        </form>
+        <div className="flex justify-center gap-2 items-center mt-4">
+          <p className="text-sm">Don’t have an account?</p>
+          <a href="/signup" className="text-gray-600 hover:text-blue-600 text-sm">
+             Register Now
+          </a>
+        </div>
+        <div className="mt-6 text-center">
+          <span className="text-gray-500">Unable to login? </span>
+          <a href="/help" className="text-red-600 font-semibold">
+            Help
+          </a>
+        </div>
+        <div className="flex justify-center mt-4 space-x-4">
+          <img src="/images/watsapp_logo.png" alt="WhatsApp" className="w-6 h-6" />
+          <img src="/images/telegram_logo.png" alt="Telegram" className="w-6 h-6" />
+          <img src="/images/facebook.png" alt="Facebook" className="w-6 h-6" />
+          <img src="/images/insta.png" alt="Instagram" className="w-6 h-6" />
+          <img src="/images/youTube_logo.png" alt="YouTube" className="w-6 h-6" />
         </div>
       </div>
-    </Layout>
+    </div>
   );
 };
 

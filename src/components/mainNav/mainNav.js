@@ -45,19 +45,19 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="hidden sm:flex justify-between items-center pl-2 pt-2 pb-2 pr-6 fixed top-0 w-full bg-blue-800 z-50">
+    <nav className="hidden sm:flex justify-between items-center pl-2 pt-2 pb-2 pr-6 fixed top-0 w-full bg-white z-50">
       {/* Logo */}
       <img
         src="/images/main_logo.png"
         onClick={() => {
           navigate("/");
         }}
-        className="w-10 hover:cursor-pointer"
+        className="w-20 h-12 hover:cursor-pointer"
         alt="Logo"
       />
 
       {/* Hamburger Menu Button (Visible on small screens) */}
-      <div className="md:hidden" onClick={() => setIsMenuOpen(!isMenuOpen)}>
+      <div className="sm:hidden" onClick={() => setIsMenuOpen(!isMenuOpen)}>
         {/* Hamburger Icon */}
         <img src="/images/menu_all.png" className="w-[50px]" alt="Menu" />
       </div>
@@ -70,7 +70,7 @@ const Navbar = () => {
       >
         <div className="flex flex-col md:flex-row items-center gap-6 md:gap-12 font-bold bg-yellow-200 sm:bg-transparent p-4 md:p-0 rounded-lg">
           {/* Show all links on large screens */}
-          <div className="hidden md:flex gap-10 text-white ">
+          <div className="hidden md:flex gap-10 text-black ">
             <a href="/" className="hover:text-yellow-600 hover:underline">
               Home
             </a>
