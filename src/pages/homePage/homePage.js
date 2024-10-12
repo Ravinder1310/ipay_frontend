@@ -11,14 +11,16 @@ import TopNav from '../../components/topNav/topNav'
 import Slider2 from '../../components/sliderCube/Slider'
 import BottomNavbar from '../../components/bottomNav/BottomNavbar'
 import NewNavbar from '../../components/NewNavbar/newNavbar'
+import DashboardSection from '../../components/dashboard/Dashboard'
 
 const HomePage = () => {
   return (
     <Layout>
-      <div className=''>
-        <NewNavbar/>
+      <div className='bg-blue-100 pb-10'>
+        {/* <NewNavbar/> */}
       <ImageSlider/>
       <Marquee/>
+      <DashboardSection/>
       <MainTransfer/>
       <Slider2/>
       <RechargeAndBill/>

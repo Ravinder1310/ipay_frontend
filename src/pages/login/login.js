@@ -66,10 +66,7 @@ const Login = () => {
 
   return (
     <div
-      className="h-screen sm:h-auto flex justify-center items-center sm:pb-10"
-      style={{
-        backgroundColor: "#ed7e31", // Red background color
-      }}
+      className="h-screen sm:h-auto flex justify-center items-center sm:pb-10 bg-blue-200"
     >
       <Toaster />
       <div className="bg-white rounded-xl text-black shadow-lg p-6 w-[85%] sm:w-[32%] h-[540px] sm:h-[600px]  sm:mt-8">
@@ -125,7 +122,7 @@ const Login = () => {
           </div>
           <button
             type="submit"
-            className={`w-full text-white bg-red-600 hover:bg-red-700 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-full text-sm px-5 py-2.5 text-center shadow-md ${
+            className={`w-full text-white bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-full text-sm px-5 py-2.5 text-center shadow-md ${
               loading ? "bg-gray-500 cursor-not-allowed" : ""
             }`}
             disabled={loading}
@@ -141,7 +138,7 @@ const Login = () => {
         </div>
         <div className="mt-6 text-center">
           <span className="text-gray-500">Unable to login? </span>
-          <a href="/help" className="text-red-600 font-semibold">
+          <a href="/contactUs" className="text-red-600 font-semibold">
             Help
           </a>
         </div>

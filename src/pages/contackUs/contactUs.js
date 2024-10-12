@@ -65,8 +65,8 @@ const ContactUs = () => {
   return (
     <Layout>
       <ToastContainer position="top-right" autoClose={5000} hideProgressBar={false} closeOnClick draggable pauseOnHover />
-      <div className= "py-10 w-[90%] m-auto mt-16 sm:mt-0 bg-transparent px-4 sm:px-0">
-        <div className="max-w-lg mx-auto bg-white p-8 shadow-lg rounded-lg">
+      <div className= "py-10 w-[100%] m-auto mt-0 sm:mt-0 bg-transparent pt-20 px-4 sm:px-0 bg-blue-200">
+        <div className="max-w-lg mx-auto bg-blue-200 px-4 py-8 shadow-lg rounded-lg">
           <h2 className="text-3xl font-bold text-gray-800 mb-4 text-center">
             Contact Us
           </h2>

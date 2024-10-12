@@ -127,10 +127,7 @@ const SignUp = () => {
 
   return (
     <div
-      className="h-auto sm:h-full flex justify-center items-center sm:pb-10 pb-20"
-      style={{
-        backgroundColor: "#ed7e31", // Red background color like the login page
-      }}
+      className="h-auto sm:h-full flex justify-center items-center sm:pb-10 pb-20 bg-blue-200"
     >
       <Toaster />
       <div className="bg-white rounded-xl text-black shadow-lg p-6 w-[90%] sm:w-[32%] h-[700px] sm:h-auto sm:mt-8 mt-10">
@@ -233,7 +230,7 @@ const SignUp = () => {
               type="button"
               className={`w-full py-2 rounded-full transition-all duration-300 ${
                 selectedPosition === "left"
-                  ? "bg-red-500 text-white"
+                  ? "bg-blue-500 text-white"
                   : "bg-gray-100 text-gray-600"
               }`}
               onClick={() => handlePositionSelect("left")}
@@ -244,7 +241,7 @@ const SignUp = () => {
               type="button"
               className={`w-full py-2 rounded-full transition-all duration-300 ${
                 selectedPosition === "right"
-                  ? "bg-red-500 text-white"
+                  ? "bg-blue-500 text-white"
                   : "bg-gray-100 text-gray-600"
               }`}
               onClick={() => handlePositionSelect("right")}
@@ -257,8 +254,8 @@ const SignUp = () => {
           <button
             type="submit"
             className={`w-full ${
-              loading ? "bg-gray-500 cursor-not-allowed" : "bg-red-600"
-            } text-white rounded-full py-2 shadow-lg transition duration-500 hover:bg-red-700`}
+              loading ? "bg-gray-500 cursor-not-allowed" : "bg-blue-600"
+            } text-white rounded-full py-2 shadow-lg transition duration-500 hover:bg-blue-700`}
             disabled={loading} // Disable button when loading
           >
             {loading ? "Processing..." : "Proceed"}
@@ -275,8 +272,7 @@ const SignUp = () => {
         {/* Congratulations Modal */}
         {showCongrats && userDetails && (
           <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50">
-            <div className="bg-orange-600 p-3 rounded-lg shadow-lg w-96 text-center text-white">
-              <h3> !! Welcome Letter !!</h3>
+            <div className="bg-blue-600 p-3 rounded-lg shadow-lg w-96 text-center text-white">
               {/* <h2 className="text-2xl font-bold mb-4">Congratulations!</h2> */}
               <img src="/images/congrats.gif" className="w-[200px] m-auto" alt="error"/>
               <p className="text-white mb-4">

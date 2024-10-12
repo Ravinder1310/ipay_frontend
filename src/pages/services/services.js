@@ -96,12 +96,12 @@ const Services = () => {
 
   return (
     <Layout>
-    <div className='mb-20'>
-        <img className='h-[250px] sm:h-full mt-16 sm:mt-0' src='/images/services2.png'/>
+    <div className='pb-20 bg-blue-200'>
+        <img className='h-[250px] sm:h-full sm:mt-0' src='/images/services2.png'/>
         <div className="flex items-center justify-center absolute top-[25%] left-[15%] sm:top-64 sm:left-[20%] bg-transparent text-white">
       <TypeAnimation
         sequence={[
-          'Welcome to ZBAZAAR!', // Text to display
+          'Welcome to I-PAY!', // Text to display
           2000, // Pause for 2 seconds
           'Your satisfaction is our priority!', // Next text
           2000, // Pause for 2 seconds
@@ -120,8 +120,8 @@ const Services = () => {
         repeat={Infinity} // Repeat the animation
       />
     </div>
-    <div className='mt-14 w-[90%] m-auto'>
-        <h1 className='font-bold text-4xl text-white'>Our Services</h1>
+    <div className=' w-[90%] m-auto'>
+        <h1 className='font-bold text-4xl text-blue-900 mt-10'>Our Services</h1>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 mt-10">
           {allServices.map((service, index) => (
             <div

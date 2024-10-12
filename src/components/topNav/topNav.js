@@ -8,7 +8,7 @@ const TopNav = () => {
  const [auth, setAuth] = useAuth();
 
   return (
-    <div className= {`hidden ${auth?.token ? `md:hidden` : "md:flex"} md:flex bg-blue-900 text-white mt-[64px] justify-between pl-4 pr-6 pt-2 pb-2`}>
+    <div className= {`hidden ${auth?.token ? `md:hidden` : "md:flex"} md:flex bg-blue-900 text-white justify-between pl-4 pr-6 pt-2 pb-2`}>
       <div className='flex gap-10'>
         <div className='flex items-center gap-4'>
           <img src='/images/loc.png' className='w-10 h-10' alt='error' />

@@ -5,7 +5,7 @@ const FeaturesSection = () => {
     <div className="bg-white w-[90%] m-auto mt-20 rounded-lg text-white py-12">
       <div className="container mx-auto px-4 grid grid-cols-1 md:grid-cols-3 gap-8">
         {/* Card 1 */}
-        <div className="text-center bg-gradient-to-r from-yellow-400 via-yellow-500 to-yellow-600 p-6 rounded-xl">
+        <div className="text-center bg-gradient-to-r bg-black p-6">
           <div className="flex justify-center mb-4">
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -23,13 +23,13 @@ const FeaturesSection = () => {
             </svg>
           </div>
           <h3 className="text-xl font-bold mb-2">Innovative Model</h3>
-          <p className="text-black font-bold">
+          <p className="text-white font-bold">
             Elevate your financial game through our innovative model.
           </p>
         </div>
 
         {/* Card 2 */}
-        <div className="text-center bg-gradient-to-r from-yellow-400 via-yellow-500 to-yellow-600 p-6 rounded-xl">
+        <div className="text-center bg-gradient-to-r bg-black p-6">
           <div className="flex justify-center mb-4">
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -47,13 +47,13 @@ const FeaturesSection = () => {
             </svg>
           </div>
           <h3 className="text-xl font-bold mb-2">Seamless Transaction Experience</h3>
-          <p className="text-black font-bold">
+          <p className="text-white font-bold">
             Recharge, pay bills, and manage finances effortlessly within a few taps.
           </p>
         </div>
 
         {/* Card 3 */}
-        <div className="text-center bg-gradient-to-r from-yellow-400 via-yellow-500 to-yellow-600 p-6 rounded-xl">
+        <div className="text-center bg-gradient-to-r bg-black p-6">
           <div className="flex justify-center mb-4">
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -71,7 +71,7 @@ const FeaturesSection = () => {
             </svg>
           </div>
           <h3 className="text-xl font-bold mb-2">Robust Security Measures</h3>
-          <p className="text-black font-bold">
+          <p className="text-white font-bold">
             Enjoy peace of mind with industry-standard encryption for secure transactions.
           </p>
         </div>

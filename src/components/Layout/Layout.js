@@ -4,6 +4,7 @@ import TopNav from "../topNav/topNav";
 import MainNav from "../mainNav/mainNav";
 import Footer from "../footer/footer";
 import BottomNavbar from "../bottomNav/BottomNavbar";
+import NewNavbar from "../NewNavbar/newNavbar";
 
 // import Footer from "./footer/footer";
 // import { Toaster } from "react-hot-toast";
@@ -22,7 +23,7 @@ const Layout = ({ children, title, description, keywords, author }) => {
       {/* <BottomNav/> */}
       <main className="" style={{ minHeight: "70vh"  }}>
         {/* <Toaster /> */}
-        <TopNav/>
+        <NewNavbar/>
         <MainNav/>
         {children}
         <Footer/>

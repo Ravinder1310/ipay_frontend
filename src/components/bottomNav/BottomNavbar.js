@@ -1,11 +1,14 @@
 import React from "react";
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
-import { FaPhone, FaHome, FaIdCard, FaEdit, FaUniversity, FaImages, FaFilePdf, FaKey, FaExchangeAlt, FaTimes } from 'react-icons/fa';
+import { FaPhone, FaHome, FaIdCard, FaEdit, FaUniversity, FaImages, FaFilePdf, FaKey, FaExchangeAlt, FaTimes, FaAddressBook } from 'react-icons/fa';
 
 const BottomNavbar = () => {
 
  const navigate = useNavigate();
+ const text1 = "My Bussiness";
+ const text2 = "Recharge";
+ const text3 = "Packages";
 
  const handleToast = () => {
   toast("Sorry for the inconvenience but currently We are working on this", {
@@ -21,40 +24,39 @@ const BottomNavbar = () => {
  };
 
   return (
-    <div className="fixed sm:hidden bottom-0 sm:left-[26%] h-[80px] bg-white shadow-md w-full z-20">
+    <div className="fixed bottom-0 h-[80px] bg-blue-300 text-blue-900 shadow-md w-full z-20">
       <div className="flex justify-around items-center py-2">
 
         {/* Home Section */}
-        <div className="flex flex-col items-center" onClick={() => { navigate("/") }}>
-          <div className="text-xl text-black text-center">
+        <div className="flex flex-col items-center hover:bg-blue-600 hover:text-white hover:cursor-pointer p-2 rounded-md" onClick={() => { navigate("/") }}>
+          <div className=" text-md text-center">
             <FaHome className="m-auto"/>
             <p>Home</p>
           </div>
         </div>
 
         {/* Packages Section */}
-        <div className="flex flex-col items-center" onClick={() => { navigate("/users/user/packages") }}>
-          <img src="/images/packages.png" className="w-[40px]" alt="Packages"/>
-        </div>
-
-        {/* QR Code Section (Center Button) */}
-        <div className="flex flex-col items-center bg-blue-600 p-3 rounded-full" onClick={handleToast}>
-          <div className="text-2xl text-white">
-            <img src="/images/qr_code.png" className="w-[40px]" alt="QR Code"/>
+        <div className="flex flex-col items-center hover:bg-blue-600 hover:text-white hover:cursor-pointer p-1 rounded-md" onClick={() => { navigate("/users/user/packages") }}>
+           <div className="text-md text-center">
+            <FaIdCard className="m-auto"/>
+            
+            <p>{text1.substring(0, 7)}...</p>
           </div>
         </div>
 
         {/* Recharge Section */}
-        <div className="flex flex-col items-center" onClick={() => { navigate("/users/user/recharge-mobile") }}>
-          <div className="text-xl text-black">
-            <img src="/images/rechrge.png" className="w-[40px]" alt="Recharge"/>
+        <div className="flex flex-col items-center hover:bg-blue-600 hover:text-white hover:cursor-pointer p-1 rounded-md" onClick={() => { navigate("/users/user/recharge-mobile") }}>
+        <div className="text-md text-center">
+            <FaPhone className="m-auto"/>
+            <p>{text2.substring(0, 10)}</p>
           </div>
         </div>
 
         {/* Profile Section */}
-        <div className="flex flex-col items-center" onClick={() => { navigate("/users/user/my-profile") }}>
-          <div className="text-xl text-black">
-            <img src="/images/profile.png" className="w-[40px]" alt="Profile"/>
+        <div className="flex flex-col items-center hover:bg-blue-600 hover:text-white hover:cursor-pointer p-1 rounded-md" onClick={() => { navigate("/users/user/packages") }}>
+        <div className="text-md text-center">
+            <FaAddressBook className="m-auto"/>
+            <p>{text3}</p>
           </div>
         </div>
 

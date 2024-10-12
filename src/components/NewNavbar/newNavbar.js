@@ -1,21 +1,58 @@
 import React, { useState } from 'react';
-import { Drawer, DrawerBody, DrawerOverlay, DrawerContent, Button, Box, IconButton, Image } from '@chakra-ui/react';
+import {
+  Drawer,
+  DrawerBody,
+  DrawerOverlay,
+  DrawerContent,
+  Button,
+  Box,
+  IconButton,
+  Image
+} from '@chakra-ui/react';
 import { useAuth } from '../../context/auth';
-import { FaPhone, FaHome, FaIdCard, FaEdit, FaUniversity, FaImages, FaFilePdf, FaKey, FaExchangeAlt, FaTimes } from 'react-icons/fa';
+import {
+  FaPhone,
+  FaHome,
+  FaIdCard,
+  FaEdit,
+  FaUniversity,
+  FaImages,
+  FaFilePdf,
+  FaKey,
+  FaExchangeAlt,
+  FaTimes
+} from 'react-icons/fa';
+import { useNavigate } from 'react-router-dom';
+import toast, { Toaster } from 'react-hot-toast';
 
 const NewNavbar = () => {
-  const [auth] = useAuth();
+  const [auth, setAuth] = useAuth();
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
+  const navigate = useNavigate();
 
   // Toggle drawer visibility
   const toggleDrawer = () => {
     setIsDrawerOpen(!isDrawerOpen);
   };
 
+  const handleLogout = () => {
+    setAuth({
+      ...auth,
+      user: null,
+      token: "",
+    });
+    localStorage.removeItem("auth");
+    toast("Logout successfully");
+    setTimeout(() => {
+      navigate("/login");
+    }, 2000);
+  };
+
   return (
-    <>
-      <div className={`${auth?.token ? ' flex justify-between  z-50 bg-white' : 'hidden'}`}>
-        <img src='/images/main_logo.png' className='w-20 h-14' alt='error' />
+    <div>
+      <Toaster />
+      <div className={`${auth?.token ? ' flex justify-between  z-40 bg-blue-200 fixed w-full' : 'hidden'}`}>
+        <img src='/images/main_logo.png' className='w-20 h-14 cursor-pointer' alt='error' onClick={() => { navigate("/") }} />
         <img
           src='/images/new_menu.png'
           className='w-20 h-14 cursor-pointer'
@@ -31,14 +68,16 @@ const NewNavbar = () => {
         onClose={toggleDrawer}  // This will close the drawer
       >
         <DrawerOverlay />
-        <DrawerContent 
-          bg="white" 
-          maxWidth="85vw" 
+        <DrawerContent
+          bg="white"
+          maxWidth="85vw"
           width="85vw"
+          marginTop={'55px'}
+          zIndex={"50"}
         >
           {/* Top Section with User Info and Close Button */}
           <Box bg="red.600" p={4} borderTopRightRadius="20px" position="relative">
-            <Box display="flex" bg={'orange'} marginTop={'-5px'} marginLeft={"-4px"} height={'70px'} width={'310px'} padding={'30px'} gap={'20px'} alignItems="center" mb={4}>
+            <Box display="flex" bg={'#000080'} marginTop={'-5px'} marginLeft={"-4px"} height={'70px'} width={'103%'} padding={'30px'} gap={'20px'} alignItems="center" mb={4}>
               <Image
                 src='/images/avatar.png'
                 borderRadius="full"
@@ -47,7 +86,7 @@ const NewNavbar = () => {
               />
               <Box color="white">
                 <div className='text-lg font-bold'>RAVI KUMAR</div>
-                <div className='text-sm'>ZP85623972</div>
+                <div className='text-sm'>{auth?.user?.referralCode}</div>
               </Box>
 
               {/* Close Button in the profile section */}
@@ -70,7 +109,7 @@ const NewNavbar = () => {
               <Button
                 leftIcon={<FaPhone />}
                 colorScheme="whiteAlpha"
-                bg="orange"
+                bg="#000080"
                 size="sm"
                 fontWeight={'600'}
                 color={'white'}
@@ -84,7 +123,7 @@ const NewNavbar = () => {
               <Button
                 leftIcon={<FaPhone />}
                 colorScheme="whiteAlpha"
-                bg="orange"
+                bg="#000080"
                 size="sm"
                 fontWeight={'600'}
                 color={'white'}
@@ -99,31 +138,34 @@ const NewNavbar = () => {
           </Box>
 
           {/* Drawer Body - Menu Items */}
-          <DrawerBody mt={0} p={'10px 30px'}>
-            <ul className='space-y-6 text-orange-500 text-xl'>
-              <li className='flex items-center space-x-6'>
+          <DrawerBody mt={0} p={'10px 30px'} overflowY="auto" maxHeight="50vh"> {/* Added overflowY and maxHeight */}
+            <ul className='space-y-6 text-blue-900 text-xl'>
+              <li className='flex items-center space-x-6 hover:cursor-pointer hover:text-black' onClick={() => { navigate("/") }}>
                 <FaHome /> <span>Dashboard</span>
               </li>
-              <li className='flex items-center space-x-6'>
+              <li className='flex items-center space-x-6 hover:cursor-pointer hover:text-black' onClick={() => { navigate("/users/user/tree") }}>
                 <FaIdCard /> <span>My Team</span>
               </li>
-              <li className='flex items-center space-x-6'>
+              <li className='flex items-center space-x-6 hover:cursor-pointer hover:text-black' onClick={() => { navigate("/users/user/matching-income") }}>
                 <FaEdit /> <span>Matching Income</span>
               </li>
-              <li className='flex items-center space-x-6'>
+              <li className='flex items-center space-x-6 hover:cursor-pointer hover:text-black' onClick={() => { navigate("/users/user/level-income") }}>
                 <FaUniversity /> <span>Level Income</span>
               </li>
-              <li className='flex items-center space-x-6'>
+              <li className='flex items-center space-x-6 hover:cursor-pointer hover:text-black' onClick={() => { navigate("/users/user/recharge-income") }}>
+                <FaUniversity /> <span>Recharge History & Income</span>
+              </li>
+              <li className='flex items-center space-x-6 hover:cursor-pointer hover:text-black' onClick={() => { navigate("/users/user/invite") }}>
                 <FaImages /> <span>Invitation</span>
               </li>
-              <li className='flex items-center space-x-6'>
+              <li className='flex items-center space-x-6 hover:cursor-pointer hover:text-black' onClick={handleLogout}>
                 <FaFilePdf /> <span>Log Out</span>
               </li>
             </ul>
           </DrawerBody>
         </DrawerContent>
       </Drawer>
-    </>
+    </div>
   );
 };
 

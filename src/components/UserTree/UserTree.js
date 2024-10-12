@@ -87,9 +87,9 @@ console.log("root user id ", rootUserId);
   // Render the user tree using react-d3-tree
   return (
     <Layout>
-      <div className='pt-24'>
-        <div className='w-[100%] m-auto flex justify-center mt-[-100px] sm:mt-0  items-center top-0 sm:top-24  '>
-        <h1 className='text-white font-bold'>This is you team tree, minimize the tree for the better experience</h1>
+      <div className='pt-24 bg-blue-200'>
+        <div className='w-[100%] m-auto flex justify-center mt-[-60px] sm:mt-0  items-center top-0 sm:top-24  '>
+        <h1 className='text-black font-bold'>This is you team tree, minimize the tree for the better experience</h1>
             <div className='   rounded-2xl text-white w-full  px-4 py-4 justify-between  font-bold'>
               <div className='flex my-4  items-center'><div className='h-12 w-12 mx-2 bg-red-500 rounded-full'></div><div> Active</div></div>
               <div className='flex my-4  items-center'><div className='h-12 w-12 mx-2 bg-green-500 rounded-full'></div> <div>Not Active</div></div>

@@ -283,9 +283,9 @@ const Recharge = () => {
         </div>
       )}
 
-      <div className="w-full md:w-[100%] lg:w-[100%] sm:mt-14 m-auto pt-20 bg-blue-600 h-[700px] sm:pt-10">
+      <div className="w-full md:w-[100%] lg:w-[100%] sm:mt-14 m-auto pt-20 bg-gray-300 h-[700px] sm:pt-10">
         {!selectedPlan && (
-          <h2 className="text-2xl font-bold text-center mb-6 text-white">
+          <h2 className="text-2xl font-bold text-center mb-6 text-orange-500">
             Check Available Plans
           </h2>
         )}
@@ -296,7 +296,7 @@ const Recharge = () => {
             {/* Dropdown for Operator Selection and Mobile Number Input */}
             {plans.length === 0 && (
               <div className="mt-10">
-                <div className="flex flex-wrap sm:justify-between w-[70%] sm:w-[50%] m-auto justify-center">
+                <div className="flex flex-wrap sm:justify-between w-[70%] sm:w-[50%] m-auto justify-center shadow-xl py-10 px-4 bg-blue-200 rounded-lg">
                   <div className="mb-6 w-full sm:w-auto sm:mr-4">
                     <input
                       type="text"
@@ -399,7 +399,7 @@ const Recharge = () => {
 
             {/* Selected Plan Details */}
             {selectedPlan && (
-              <div className="mt-6 bg-gray-200 p-6 rounded-lg shadow-lg w-[90%] sm:w-[50%] m-auto">
+              <div className="mt-6 bg-blue-200 font-bold p-6 rounded-lg shadow-lg w-[90%] sm:w-[50%] m-auto">
                 <h3 className="text-lg font-bold text-center text-green-700 mb-4">
                   Selected Plan
                 </h3>

@@ -44,8 +44,8 @@ function Invitation() {
   return (
     <Layout title={'Invite - Earning Money'}>
       {/* <ToastContainer /> */}
-      <div className='  p-4 sm:p-28'>
-      <div className=" mx-auto w-full sm:w-[50%] p-4 h-[400px] border-4 font-bold border-white rounded-xl bg-gradient-to-tr from-green-400 to-blue-400 pt-28">
+      <div className='  p-4 sm:p-28 bg-blue-200'>
+      <div className=" mx-auto w-full sm:w-[50%] mt-20 p-4 h-[400px] border-4 font-bold rounded-xl bg-gradient-to-tr from-green-400 to-blue-400 pt-20">
         <div className="flex flex-col justify-center items-center text-lg">
           <div>Your Invitation Code</div>
           <div className="font-bold">{user?.referralCode}</div>
@@ -53,7 +53,7 @@ function Invitation() {
         <div className="mt-4">
           <div>Dear Members, the following is your Invitation Link</div>
           <div className="flex flex-col justify-center items-center mt-2">
-            <div className="w-4/5 border p-2 rounded-lg border-white">
+            <div className="w-[95%] border p-2 rounded-lg border-white">
               {invitationLink}
             </div>
             <div className="w-4/5">
