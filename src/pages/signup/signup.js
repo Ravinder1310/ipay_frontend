@@ -65,7 +65,7 @@ const SignUp = () => {
         {
           name,
           email,
-          mobileNumber,
+          mobileNumber, 
           password,
           referredBy,
           preferredSide: selectedPosition,
@@ -283,28 +283,28 @@ const SignUp = () => {
                   <tbody>
                     <tr className="text-center">
                       <td className="border p-2">User Id</td>
-                      <td className="border">{user1.referralCode}</td>
+                      <td className="border">{user1?.referralCode}</td>
                     </tr>
                     <tr className="text-center">
                       <td className="border p-2">User Name</td>
-                      <td className="border">{user1.userName}</td>
+                      <td className="border">{user1?.userName}</td>
                     </tr>
                     <tr className="text-center">
                       <td className="border p-2">Email Id</td>
-                      <td className="border">{user1.email}</td>
+                      <td className="border">{user1?.email}</td>
                     </tr>
                     <tr className="text-center">
                       <td className="border p-2">Mobile</td>
-                      <td className="border">{user1.mobileNumber}</td>
+                      <td className="border">{user1?.mobileNumber}</td>
                     </tr>
                     <tr className="text-center">
                       <td className="border p-2">Password</td>
-                      <td className="border">{user1.password}</td>
+                      <td className="border">{user1?.password}</td>
                     </tr>
                     <tr className="text-center">
                       <td className="border p-2">Registeration Date</td>
                       <td className="border">
-                        {new Date(user1.createdAt).toLocaleString("en-IN", {
+                        {new Date(user1?.createdAt).toLocaleString("en-IN", {
                           day: "numeric",
                           month: "long",
                           year: "numeric",
@@ -318,15 +318,15 @@ const SignUp = () => {
                     </tr>
                     <tr className="text-center">
                       <td className="border p-2">Sponser Id</td>
-                      <td className="border">{user2.referralCode}</td>
+                      <td className="border">{user2?.referralCode}</td>
                     </tr>
                     <tr className="text-center">
                       <td className="border p-2">Sponser Name</td>
-                      <td className="border">{user2.userName}</td>
+                      <td className="border">{user2?.userName}</td>
                     </tr>
                     <tr className="text-center">
                       <td className="border p-2">Sponser Mobile</td>
-                      <td className="border">{user2.mobileNumber}</td>
+                      <td className="border">{user2?.mobileNumber}</td>
                     </tr>
                   </tbody>
                 </table>
