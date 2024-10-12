@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   Drawer,
   DrawerBody,
@@ -24,15 +24,44 @@ import {
 } from 'react-icons/fa';
 import { useNavigate } from 'react-router-dom';
 import toast, { Toaster } from 'react-hot-toast';
+import axios from 'axios';
 
 const NewNavbar = () => {
   const [auth, setAuth] = useAuth();
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
   const navigate = useNavigate();
+  const [user, setUser] = useState();
 
   // Toggle drawer visibility
   const toggleDrawer = () => {
     setIsDrawerOpen(!isDrawerOpen);
+  };
+
+  const getUser = async () => {
+    const  id  = auth?.user?.id;
+    const token = auth?.token;
+
+    try {
+      const res = await axios.get(
+        `${process.env.REACT_APP_API_URL}/user/profile/${id}`,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+
+      if (res && res.data) {
+        setUser(res.data);
+        console.log(res.data);
+        
+      } else {
+        toast("Failed to retrieve user profile");
+      }
+    } catch (error) {
+      console.log(error);
+      toast("Something went wrong");
+    }
   };
 
   const handleLogout = () => {
@@ -47,6 +76,12 @@ const NewNavbar = () => {
       navigate("/login");
     }, 2000);
   };
+
+  useEffect(() => {
+    if(auth?.token){
+      getUser();
+    }
+  },[])
 
   return (
     <div>
@@ -85,8 +120,8 @@ const NewNavbar = () => {
                 mr={3}
               />
               <Box color="white">
-                <div className='text-lg font-bold'>RAVI KUMAR</div>
-                <div className='text-sm'>{auth?.user?.referralCode}</div>
+                <div className='text-lg font-bold'>{user?.userName}</div>
+                <div className='text-sm'>{user?.referralCode}</div>
               </Box>
 
               {/* Close Button in the profile section */}
