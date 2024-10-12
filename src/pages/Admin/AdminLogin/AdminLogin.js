@@ -74,7 +74,7 @@ const AdminLogin = () => {
     <div className="loginContainerAdmin">
       <Toaster/>
       <div className="text-center mb-12 animate-bounce mt-10">
-            <h2 className="text-5xl font-extrabold text-green-400 animate-bounce">U Tech International </h2>
+            <h2 className="text-5xl font-extrabold text-green-400 animate-bounce">I Pay </h2>
             <p className="mt-6 text-3xl font-bold text-gray-300">
               Admin Login
             </p>
