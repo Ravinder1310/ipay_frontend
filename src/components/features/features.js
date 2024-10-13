@@ -1,8 +1,12 @@
 import React from "react";
+import { useAuth } from "../../context/auth";
 
 const FeaturesSection = () => {
+
+ const [auth] = useAuth();
+
   return (
-    <div className="bg-white w-[90%] m-auto mt-20 rounded-lg text-white py-12">
+    <div className={`${auth?.token ? "hidden":"bg-white w-[90%] m-auto mt-20 rounded-lg text-white py-12"}`}>
       <div className="container mx-auto px-4 grid grid-cols-1 md:grid-cols-3 gap-8">
         {/* Card 1 */}
         <div className="text-center bg-gradient-to-r bg-black p-6">

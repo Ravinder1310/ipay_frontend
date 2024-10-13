@@ -7,9 +7,15 @@ import './style.css';
 import { Autoplay, EffectCube } from 'swiper/modules';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMobileAlt, faTv, faBolt, faGasPump, faWater, faMoneyCheckAlt, faChartLine } from '@fortawesome/free-solid-svg-icons'; // Import relevant icons
+import { useAuth } from '../../context/auth';
 
 const Slider2 = () => {
+
+   const [auth] = useAuth();
+
     return (
+        <div className={`${auth?.token ? "hidden" : "block"}`}>
+            <h1 className='mt-10 text-4xl text-bold text-red-700'>Our Service</h1>
         <Swiper
             effect={'cube'}
             grabCursor={true}
@@ -27,34 +33,35 @@ const Slider2 = () => {
             className="mySwiper"
         >
             <SwiperSlide>
-                <FontAwesomeIcon icon={faMobileAlt} size="5x" className="text-blue-900 mt-10" />
-                <h1 className='mt-6 text-xl'>Mobile Recharge</h1>
+                <FontAwesomeIcon icon={faMobileAlt} size="5x" className=" text-red-700 mt-10" />
+                <h1 className='mt-6 text-xl text-red-700'>Mobile Recharge</h1>
             </SwiperSlide>
             <SwiperSlide>
-                <FontAwesomeIcon icon={faTv} size="5x" className="text-blue-900 mt-10" />
-                <h1 className='mt-6 text-xl'>DTH Recharge</h1>
+                <FontAwesomeIcon icon={faTv} size="5x" className=" text-red-700 mt-10" />
+                <h1 className='mt-6 text-xl text-red-700'>DTH Recharge</h1>
             </SwiperSlide>
             <SwiperSlide>
-                <FontAwesomeIcon icon={faBolt} size="5x" className="text-blue-900 mt-10" />
-                <h1 className='mt-6 text-xl'>Electricity Bill</h1>
+                <FontAwesomeIcon icon={faBolt} size="5x" className=" text-red-700 mt-10" />
+                <h1 className='mt-6 text-xl text-red-700'>Electricity Bill</h1>
             </SwiperSlide>
             <SwiperSlide>
-                <FontAwesomeIcon icon={faGasPump} size="5x" className="text-blue-900 mt-10" />
-                <h1 className='mt-6 text-xl'>Gas Bill</h1>
+                <FontAwesomeIcon icon={faGasPump} size="5x" className=" text-red-700 mt-10" />
+                <h1 className='mt-6 text-xl text-red-700'>Gas Bill</h1>
             </SwiperSlide>
             <SwiperSlide>
-                <FontAwesomeIcon icon={faWater} size="5x" className="text-blue-900 mt-10" />
-                <h1 className='mt-6 text-xl'>Water Bill</h1>
+                <FontAwesomeIcon icon={faWater} size="5x" className=" text-red-700 mt-10" />
+                <h1 className='mt-6 text-xl text-red-700'>Water Bill</h1>
             </SwiperSlide>
             <SwiperSlide>
-                <FontAwesomeIcon icon={faMoneyCheckAlt} size="5x" className="text-blue-900 mt-10" />
-                <h1 className='mt-6 text-xl'>Pay to Account</h1>
+                <FontAwesomeIcon icon={faMoneyCheckAlt} size="5x" className=" text-red-700 mt-10" />
+                <h1 className='mt-6 text-xl text-red-700'>Pay to Account</h1>
             </SwiperSlide>
             <SwiperSlide>
-                <FontAwesomeIcon icon={faChartLine} size="5x" className="text-blue-900 mt-10" />
-                <h1 className='mt-6 text-xl'>Loan & EMI</h1>
+                <FontAwesomeIcon icon={faChartLine} size="5x" className=" text-red-700 mt-10" />
+                <h1 className='mt-6 text-xl text-red-700'>Loan & EMI</h1>
             </SwiperSlide>
         </Swiper>
+        </div>
     );
 };
 

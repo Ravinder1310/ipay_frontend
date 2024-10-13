@@ -7,51 +7,100 @@ import {
   faMoneyBillWave,
   faGift,
   faMoneyCheck,
+  faCreditCard, 
+  faThLarge
 } from "@fortawesome/free-solid-svg-icons"; // Import necessary icons
+import toast, { Toaster } from "react-hot-toast";
+import { useAuth } from "../../context/auth";
 
 const MainTransfer = () => {
+
+ const [auth] = useAuth();
+
+ const handleToast = () => {
+  toast("Sorry for the inconvenience but currently We are working on this", {
+    duration: 4000,
+    position: "top-center",
+    style: {
+      background: "yellow",
+      color: "black",
+      fontWeight: 600,
+    },
+    icon: `😞`,
+  });
+};
+
   return (
-    <div className="m-auto rounded-xl mt-10 py-6 px-2 bg-gradient-to-b from-orange-200 to-white w-[95%]">
-      <h1 className="text-left font-bold mb-4 ml-4">Money Transfer</h1>
-      <div className="flex flex-wrap justify-between gap-3">
+    <div className={`${auth?.token ? "m-auto rounded-xl mt-10 py-6 px-2 bg-white shadow-xl text-red-700 w-[95%]" : "hidden"}`}>
+    <h1 className="text-left font-bold mb-4 ml-4">Money Transfer</h1>
+    {/* <Toaster/> */}
+    <div className="flex flex-wrap justify-between gap-x-4 gap-y-1">
 
-        {/* Add Money Card */}
-        <div className="w-[29%] flex flex-col items-center justify-center h-[110px]">
-          <FontAwesomeIcon icon={faWallet} size="2x" style={{ color: "#000080" }} />
-          <h4 className="mt-3 text-[14px] font-semibold text-center">Add Money</h4>
+      {/* Aadhaar Card */}
+      <div className="w-[20%] flex flex-col items-center justify-center h-[160px]" onClick={handleToast}>
+        <div className="rounded-full shadow-xl shadow-slate-300 p-4 flex justify-center items-center">
+          <FontAwesomeIcon icon={faWallet} size="1x" className="text-2xl" />
         </div>
+        <h4 className="mt-3 text-md font-semibold text-center h-16">Add Money</h4>
+      </div>
 
-        {/* Send Money Card */}
-        <div className="w-[29%] flex flex-col items-center justify-center h-[110px]">
-          <FontAwesomeIcon icon={faPaperPlane} size="2x" style={{ color: "#000080" }} />
-          <h4 className="mt-3 text-[14px] font-semibold text-center">Send Money</h4>
+      {/* PAN Card */}
+      <div className="w-[20%] flex flex-col items-center justify-center h-[160px]" onClick={handleToast}>
+        <div className="rounded-full shadow-xl shadow-slate-300 p-4 flex justify-center items-center">
+          <FontAwesomeIcon icon={faPaperPlane} size="1x" className="text-2xl" />
         </div>
+        <h4 className="mt-3 text-md font-semibold text-center h-16">Send Money</h4>
+      </div>
 
-        {/* Scan & Pay Card */}
-        <div className="w-[29%] flex flex-col items-center justify-center h-[110px]">
-          <FontAwesomeIcon icon={faQrcode} size="2x" style={{ color: "#000080" }} />
-          <h4 className="mt-3 text-[14px] font-semibold text-center">Scan & Pay</h4>
+      {/* Income Tax */}
+      <div className="w-[20%] flex flex-col items-center justify-center h-[160px]" onClick={handleToast}>
+        <div className="rounded-full shadow-xl shadow-slate-300 p-4 flex justify-center items-center">
+          <FontAwesomeIcon icon={faQrcode} size="1x" className="text-2xl" />
         </div>
+        <h4 className="mt-3 text-md font-semibold text-center h-16">Scan & Pay</h4>
+      </div>
 
-        {/* Pay to UPI Card */}
-        <div className="w-[29%] flex flex-col items-center justify-center h-[110px]">
-          <FontAwesomeIcon icon={faMoneyBillWave} size="2x" style={{ color: "#000080" }} />
-          <h4 className="mt-3 text-[14px] font-semibold text-center">Pay to UPI</h4>
+      {/* E-Card */}
+      <div className="w-[20%] flex flex-col items-center justify-center h-[160px]" onClick={handleToast}>
+        <div className="rounded-full shadow-xl shadow-slate-300 p-4 flex justify-center items-center">
+          <FontAwesomeIcon icon={faMoneyBillWave} size="1x" className="text-2xl" />
         </div>
+        <h4 className="mt-3 text-md font-semibold text-center h-16">Pay To Upi</h4>
+      </div>
 
-        {/* Redeem Money Card */}
-        <div className="w-[30%] flex flex-col items-center justify-center h-[130px]">
-          <FontAwesomeIcon icon={faGift} size="2x" style={{ color: "#000080" }} />
-          <h4 className="text-[14px] mt-2 font-semibold text-center">Redeem Money</h4>
+      {/* Voter Card */}
+      <div className="w-[20%] flex flex-col items-center justify-center h-[160px]" onClick={handleToast}>
+        <div className="rounded-full shadow-xl shadow-slate-300 p-4 flex justify-center items-center">
+          <FontAwesomeIcon icon={faCreditCard} size="1x" className="text-2xl" />
         </div>
+        <h4 className="mt-3 text-md font-semibold text-center h-16">Credit Card</h4>
+      </div>
 
-        {/* Add UPI Cash Card */}
-        <div className="w-[31%] flex flex-col items-center justify-center h-[110px]">
-          <FontAwesomeIcon icon={faMoneyCheck} size="2x" style={{ color: "#000080" }} />
-          <h4 className="mt-3 text-[14px] font-semibold text-center">Add UPI Cash</h4>
+      {/* Passport */}
+      <div className="w-[20%] flex flex-col items-center justify-center h-[160px]" onClick={handleToast}>
+        <div className="rounded-full shadow-xl shadow-slate-300 p-4 flex justify-center items-center">
+          <FontAwesomeIcon icon={faGift} size="1x" className="text-2xl" />
         </div>
+        <h4 className="text-md mt-2 font-semibold text-center h-16">Redeem Money</h4>
+      </div>
+
+      {/* Post Office */}
+      <div className="w-[20%] flex flex-col items-center justify-center h-[160px]" onClick={handleToast}>
+        <div className="rounded-full shadow-xl shadow-slate-300 p-4 flex justify-center items-center">
+          <FontAwesomeIcon icon={faMoneyCheck} size="1x" className="text-2xl" />
+        </div>
+        <h4 className="mt-3 text-md font-semibold text-center h-16">Add UPI Cash</h4>
+      </div>
+
+      {/* More Options */}
+      <div className="w-[20%] flex flex-col items-center justify-center h-[160px]" onClick={handleToast}>
+        <div className="rounded-full shadow-xl shadow-slate-300 p-4 flex justify-center items-center">
+          <FontAwesomeIcon icon={faThLarge} size="1x" className="text-2xl" />
+        </div>
+        <h4 className="mt-3 text-md font-semibold text-center h-16">More Options</h4>
       </div>
     </div>
+  </div>
   );
 };
 

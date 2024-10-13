@@ -1,8 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
+import { useAuth } from "../../context/auth";
 
 const ChooseUs = () => {
+
+ const [auth] = useAuth()
+
   return (
-    <div className="flex flex-wrap mt-10 w-[90%] m-auto rounded-lg">
+    <div className={`${auth?.token ? "hidden" : "flex flex-wrap mt-10 w-[90%] m-auto rounded-lg"}`}>
       <div className="w-full md:w-[50%] bg-white px-1 py-2 rounded-tr-lg rounded-tl-lg rounded-br-lg rounded-bl-lg sm:p-10 sm:rounded-tl-lg sm:rounded-bl-lg">
         <h1 className="text-5xl font-bold mt-10">Why Choose Us</h1>
         <p className="mt-10 text-gray-600 font-bold">

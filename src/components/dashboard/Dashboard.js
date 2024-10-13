@@ -40,14 +40,14 @@ const DashboardSection = () => {
   return (
     <div className={`${auth?.token ? "flex" : "hidden" } justify-between bg-white py-8 px-4  gap-x-4 h-[200px]`}>
       {/* Wallet Section */}
-      <div className="bg-blue-900 text-white rounded-t-lg rounded-b-md p-4 text-center w-[45%] relative h-24">
+      <div className="bg-red-600 text-white rounded-t-lg rounded-b-md p-4 text-center w-[45%] relative h-24">
         
         <h3 className="text-lg mb-4">Wallet</h3>
         <div className="text-3xl bg-white rounded-[50%] w-[60%] sm:w-[30%] m-auto mb-2">
           <FontAwesomeIcon icon={faWallet} size={"1x"} style={{color:"#000080"}}/>
           <p className="text-sm font-bold text-blue-900">Rs. {user?.rechargeWallet}</p>
         </div>
-          <button className="mt-1 bg-orange-500 text-[12px] w-[111px] text-white py-1 px-6 rounded-full mb-2">Add Money</button>
+          <button className="mt-1 bg-red-700 text-[12px] w-[111px] text-white py-1 px-6 rounded-full mb-2">Add Money</button>
       </div>
 
       {/* Reward Points Section */}
@@ -63,14 +63,14 @@ const DashboardSection = () => {
       </div> */}
 
       {/* My Lead Section */}
-      <div className="bg-blue-900 text-white rounded-t-lg rounded-b-md p-4 text-center w-[45%] relative h-24">
+      <div className="bg-red-600 text-white rounded-t-lg rounded-b-md p-4 text-center w-[45%] relative h-24">
         
         <h3 className="text-lg mb-4">My Lead</h3>
         <div className="text-3xl bg-white rounded-[50%] w-[60%] sm:w-[30%] m-auto mb-2">
           <FontAwesomeIcon icon={faUsers} size={"1x"} style={{color:"#000080"}}/>
-          <p className="text-sm font-bold text-blue-900">{users.length}</p>
+          <p className="text-sm font-bold text-red-700">{users.length}</p>
         </div>
-          <button className="mt-1 bg-orange-500 border border-orange-500 text-[12px] w-[111px] text-white py-1 px-6 rounded-full">Check Lead</button>
+          <button className="mt-1 bg-red-700 border border-orange-500 text-[12px] w-[111px] text-white py-1 px-6 rounded-full">Check Lead</button>
       </div>
     </div>
   );

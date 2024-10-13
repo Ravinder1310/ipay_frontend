@@ -1,8 +1,12 @@
 import React from 'react'
+import { useAuth } from '../../context/auth'
 
 const OurDreams = () => {
+
+ const [auth] = useAuth();
+
   return (
-    <div className='w-[95%] rounded-lg m-auto mt-10 p-3 sm:p-10 bg-white'>
+    <div className={`${auth?.token ? "hidden" : "w-[95%] rounded-lg m-auto mt-10 p-3 sm:p-10 bg-white"}`}>
       <h1 className='text-center font-bold text-3xl mb-3 mt-1 sm:mt-1'>Our Dreams</h1>
       <div className='flex flex-wrap justify-between gap-2 sm:gap-4'>
         <img className='w-[22%] sm:w-[48%] lg:w-[23%] object-cover' src='/images/family.png' alt='error' />

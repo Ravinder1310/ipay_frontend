@@ -38,7 +38,7 @@ const NewNavbar = () => {
   };
 
   const getUser = async () => {
-    const  id  = auth?.user?.id;
+    const id = auth?.user?.id;
     const token = auth?.token;
 
     try {
@@ -54,7 +54,6 @@ const NewNavbar = () => {
       if (res && res.data) {
         setUser(res.data);
         console.log(res.data);
-        
       } else {
         toast("Failed to retrieve user profile");
       }
@@ -78,15 +77,15 @@ const NewNavbar = () => {
   };
 
   useEffect(() => {
-    if(auth?.token){
+    if (auth?.token) {
       getUser();
     }
-  },[])
+  }, []);
 
   return (
     <div>
       <Toaster />
-      <div className={`${auth?.token ? ' flex justify-between  z-40 bg-blue-200 fixed w-full' : 'hidden'}`}>
+      <div className={`${auth?.token ? 'flex justify-between z-40 shadow-2xl bg-white fixed w-full' : 'hidden'}`}>
         <img src='/images/main_logo.png' className='w-20 h-14 cursor-pointer' alt='error' onClick={() => { navigate("/") }} />
         <img
           src='/images/new_menu.png'
@@ -97,6 +96,7 @@ const NewNavbar = () => {
       </div>
 
       {/* Chakra UI Drawer */}
+      <div className='z-50'>
       <Drawer
         isOpen={isDrawerOpen}
         placement="right"
@@ -112,7 +112,7 @@ const NewNavbar = () => {
         >
           {/* Top Section with User Info and Close Button */}
           <Box bg="red.600" p={4} borderTopRightRadius="20px" position="relative">
-            <Box display="flex" bg={'#000080'} marginTop={'-5px'} marginLeft={"-4px"} height={'70px'} width={'103%'} padding={'30px'} gap={'20px'} alignItems="center" mb={4}>
+            <Box display="flex" bg={'#b71b1d'} marginTop={'-5px'} marginLeft={"-4px"} height={'70px'} width={'103%'} padding={'30px'} gap={'20px'} alignItems="center" mb={4}>
               <Image
                 src='/images/avatar.png'
                 borderRadius="full"
@@ -140,11 +140,11 @@ const NewNavbar = () => {
             </Box>
 
             {/* Sponsor and Company Buttons */}
-            <Box display="flex" marginTop={'20px'} p={'10px 10px'} marginBottom={'10px'} justifyContent="space-between">
+            {/* <Box display="flex" marginTop={'10px'} p={'10px 10px'} marginBottom={'10px'} justifyContent="space-between">
               <Button
                 leftIcon={<FaPhone />}
                 colorScheme="whiteAlpha"
-                bg="#000080"
+                bg="#b71b1d"
                 size="sm"
                 fontWeight={'600'}
                 color={'white'}
@@ -158,7 +158,7 @@ const NewNavbar = () => {
               <Button
                 leftIcon={<FaPhone />}
                 colorScheme="whiteAlpha"
-                bg="#000080"
+                bg="#b71b1d"
                 size="sm"
                 fontWeight={'600'}
                 color={'white'}
@@ -169,12 +169,12 @@ const NewNavbar = () => {
               >
                 Company
               </Button>
-            </Box>
+            </Box> */}
           </Box>
 
           {/* Drawer Body - Menu Items */}
-          <DrawerBody mt={0} p={'10px 30px'} overflowY="auto" maxHeight="50vh"> {/* Added overflowY and maxHeight */}
-            <ul className='space-y-6 text-blue-900 text-xl'>
+          <DrawerBody mt={0} p={'10px 30px'}>
+            <ul className='space-y-6 text-red-700 text-xl'>
               <li className='flex items-center space-x-6 hover:cursor-pointer hover:text-black' onClick={() => { navigate("/") }}>
                 <FaHome /> <span>Dashboard</span>
               </li>
@@ -200,6 +200,7 @@ const NewNavbar = () => {
           </DrawerBody>
         </DrawerContent>
       </Drawer>
+      </div>
     </div>
   );
 };

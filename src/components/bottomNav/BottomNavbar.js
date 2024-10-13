@@ -2,10 +2,12 @@ import React from "react";
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 import { FaPhone, FaHome, FaIdCard, FaEdit, FaUniversity, FaImages, FaFilePdf, FaKey, FaExchangeAlt, FaTimes, FaAddressBook } from 'react-icons/fa';
+import { useAuth } from "../../context/auth";
 
 const BottomNavbar = () => {
 
  const navigate = useNavigate();
+ const [auth] = useAuth();
  const text1 = "My Bussiness";
  const text2 = "Recharge";
  const text3 = "Packages";
@@ -24,7 +26,7 @@ const BottomNavbar = () => {
  };
 
   return (
-    <div className="fixed bottom-0 h-[80px] bg-blue-300 text-blue-900 shadow-md w-full z-20">
+    <div className={`${auth?.token ? "fixed bottom-0 h-[80px] bg-blue-100 text-blue-900 shadow-md w-full z-20" : "hidden"}`}>
       <div className="flex justify-around items-center py-2">
 
         {/* Home Section */}
