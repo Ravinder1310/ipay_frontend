@@ -28,7 +28,7 @@ const LevelIncomeTrxn = () => {
   return (
     <Layout>
       <div className="flex pt-28 min-h-screen bg-gradient-to-b from-green-400  justify-center to-blue-500">
-        <div className="w-full sm:w-[50%] p-6 ">
+        <div className="w-full sm:w-[95%] p-6 ">
           <h2 className="text-3xl font-semibold text-gray-800 mb-6">Level Income List</h2>
           <div className="overflow-x-auto w-full">
             <table className="min-w-full text-sm bg-white border border-gray-300 rounded-lg shadow-md">

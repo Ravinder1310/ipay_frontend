@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { fundTransfer } from '../../services/apiService';
 
-const FundTransfer = () => {
+const FundTransfer2 = () => {
   const [amount, setAmount] = useState('');
   const [mobileNo, setMobileNo] = useState('');
   const [beneficiaryId, setBeneficiaryId] = useState('');
@@ -112,4 +112,4 @@ const FundTransfer = () => {
   );
 };
 
-export default FundTransfer;
+export default FundTransfer2;

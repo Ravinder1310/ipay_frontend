@@ -38,6 +38,8 @@ import AdminLogin from './pages/Admin/AdminLogin/AdminLogin.js';
 import AddDeduct from './pages/Admin/AddDeduct.js/AddDeduct.js';
 import ChangePassword from './pages/Admin/ChangePassword/ChangePassword.js';
 import AllWithdrawRequest from "./pages/Admin/AllWithdrawRequest/AllWithdrawRequest.js";
+import GetCustomer from './components/payout/GetCustomer.js';
+import FundTransfer2 from './components/payout/FundTransfer.js';
 
 function App() {
   return (
@@ -47,11 +49,13 @@ function App() {
      <Routes>
       <Route path="/users/" element={<PrivateRoute/>}>
         <Route path='user/fund-transfer' element={<FundTransfer/>}/>
+        <Route path='user/fund-transfers' element={<FundTransfer2/>}/>
         <Route path='user/add-beneficiary' element={<AddBeneficiary/>}/>
         <Route path='user/fund-transfer' element={<FundTransfer/>}/>
         <Route path='user/refund-otp' element={<RefundOTP/>}/>
         <Route path='user/refund' element={<Refund/>}/>
         <Route path='user/recharge-mobile' element={<Recharge/>}/>
+        <Route path='user/get-customer' element={<GetCustomer/>}/>
         <Route path='user/invite' element={<Invitation/>}/>
         <Route path='user/recharge-income' element={<RechargeIncome/>}/>
         <Route path='user/ifsc-details' element={<IFSCDetails/>}/>
