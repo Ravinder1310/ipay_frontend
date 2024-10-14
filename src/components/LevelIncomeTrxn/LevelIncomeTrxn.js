@@ -46,7 +46,7 @@ const LevelIncomeTrxn = () => {
                     <tr key={income._id} className="text-gray-700 hover:bg-gray-50">
                       <td className="py-2 px-4 border-b text-center">{index + 1}</td>
                       <td className="py-2 px-4 border-b">{income.fromUser}</td>
-                      <td className="py-2 px-4 border-b text-center">${income.amount}</td>
+                      <td className="py-2 px-4 border-b text-center">{income.amount}</td>
                       <td className="py-2 px-4 border-b text-center">
                         {new Date(income.createdAt).toLocaleDateString()}
                       </td>

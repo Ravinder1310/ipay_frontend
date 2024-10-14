@@ -52,7 +52,7 @@ const MatchingIncome = () => {
                       <td className="py-2 px-4 border-b">{index + 1}</td>
                       {/* <td className="py-2 px-4 border-b">{income.fromUser}</td> */}
                       {/* <td className="py-2 px-4 border-b">{income.level}</td> */}
-                      <td className="py-2 px-4 border-b">${income.amount}</td>
+                      <td className="py-2 px-4 border-b">{income.amount}</td>
                       <td className="py-2 px-4 border-b">{new Date(income.createdAt).toLocaleDateString()}</td>
                     </tr>
                   ))

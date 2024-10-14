@@ -35,7 +35,7 @@ const RechargeIncome = () => {
         <div className="w-full p-6  bg-gradient-to-b from-green-400 to-blue-500">
           <h2 className="text-3xl font-semibold text-gray-800 mb-6">Recharge Income List</h2>
           <div className="overflow-x-auto flex justify-center">
-            <table className="text-sm bg-white border border-gray-300 rounded-lg shadow-md divide-y divide-gray-200">
+            <table className="text-sm w-full bg-white border border-gray-300 rounded-lg shadow-md divide-y divide-gray-200">
               <thead>
                 <tr className="bg-green-700 text-white">
                   <th className="py-3 px-4 border-b text-center w-[100px]">S.No</th>
@@ -53,8 +53,8 @@ const RechargeIncome = () => {
                       <td className="py-2 px-4 border-b">{index + 1}</td>
                       <td className="py-2 px-4 border-b">{income.profitFrom}</td>
                       {/* <td className="py-2 px-4 border-b">{income.level}</td> */}
-                      <td className="py-2 px-4 border-b">${income.amount}</td>
-                      <td className="py-2 px-4 border-b">${income.profit}</td>
+                      <td className="py-2 px-4 border-b">{income.amount}</td>
+                      <td className="py-2 px-4 border-b">{income.profit}</td>
                       <td className="py-2 px-4 border-b">{new Date(income.createdAt).toLocaleDateString()}</td>
                     </tr>
                   ))
