@@ -39,7 +39,7 @@ const RechargeIncome = () => {
               <thead>
                 <tr className="bg-green-700 text-white">
                   <th className="py-3 px-4 border-b text-center w-[100px]">S.No</th>
-                  <th className="py-3 px-4 border-b text-left">FroUser</th>
+                  <th className="py-3 px-4 border-b text-center">FroUser</th>
                   {/* <th className="py-3 px-4 border-b text-left">Level</th> */}
                   <th className="py-3 px-4 border-b text-center">Amount</th>
                   <th className="py-3 px-4 border-b text-center">Profit</th>
