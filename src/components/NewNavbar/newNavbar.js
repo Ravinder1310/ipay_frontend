@@ -100,7 +100,7 @@ const NewNavbar = () => {
           alt="error"
           onClick={toggleDrawer}
         />
-        <div className="border-2 border-red-500 rounded-lg w-[200px] h-[60px] flex items-center px-2 py-4 bg-white"  onClick={() => {navigate('/')}}>
+        <div className="border-2 border-red-500 rounded-lg w-[210px] h-[60px] flex items-center px-2 py-4 bg-white"  onClick={() => {navigate('/')}}>
       {/* Left side with the "Z" logo */}
       <div className="">
         <FaShoppingCart className="text-red-500 text-xl" />

@@ -17,7 +17,8 @@ const Recharge = () => {
   const [loadingPlans, setLoadingPlans] = useState(false); // State for handling "Get Plans" button loading
   const [rechargeResult, setRechargeResult] = useState(null); // State to store recharge success message
   const [showConfetti, setShowConfetti] = useState(false); // State for confetti
-  const [auth, setAuth] = useAuth()
+  const [auth, setAuth] = useAuth();
+  const [filter, setFilter] = useState("all");
   // Mapping of operator names to their codes
   const operatorCodeMap = {
     Airtel: { planCode: "Airtel", rechargeCode: "MAL" },
@@ -36,6 +37,21 @@ const Recharge = () => {
       setNumber(value);
     }
   };
+
+  const filteredPlans = plans.filter((plan) => {
+    // Update the regex to capture only the type value after "type :", make it case insensitive
+    const typeMatch = plan.description.match(/type\s*:\s*(\w+\s*\/?\s*\w+)/i);
+    const type = typeMatch
+      ? typeMatch[1].trim().toUpperCase()
+      : "Type not found"; // Trim spaces and convert to uppercase
+
+    if (filter === "all") return true;
+    if (filter === "combo" && type === "COMBO") return true;
+    if (filter === "3g4g" && type === "3G/4G") return true;
+    if (filter === "topup" && type === "TOPUP") return true;
+
+    return false;
+  });
 
   // Function to fetch plans
   const fetchPlans = async () => {
@@ -181,7 +197,7 @@ const Recharge = () => {
       pwd,
       operatorcode: operator.rechargeCode, // Use the rechargeCode
       number,
-      userId:auth?.user?.id,
+      userId: auth?.user?.id,
       amount: selectedPlan.mrp,
       client_id: Math.floor(10000000 + Math.random() * 90000000).toString(),
     };
@@ -247,8 +263,6 @@ const Recharge = () => {
   };
 
   const handleType = (des) => {
-    const typeMatch = des.match(/type\s*:\s*(.*)/);
-    const type = typeMatch ? typeMatch[0] : "Type not found";
     setType(type);
   };
 
@@ -269,25 +283,25 @@ const Recharge = () => {
       {/* Confetti Effect */}
       {showConfetti && (
         <div className="w-[100%]">
-        <Confetti
-          numberOfPieces={500}
-          recycle={false}
-          gravity={0.3}
-          colors={[
-            "#FF0000",
-            "#00FF00",
-            "#0000FF",
-            "#FFFF00",
-            "#FF00FF",
-            "#00FFFF",
-          ]}
-        />
+          <Confetti
+            numberOfPieces={500}
+            recycle={false}
+            gravity={0.3}
+            colors={[
+              "#FF0000",
+              "#00FF00",
+              "#0000FF",
+              "#FFFF00",
+              "#FF00FF",
+              "#00FFFF",
+            ]}
+          />
         </div>
       )}
 
-      <div className="w-full md:w-[100%] lg:w-[100%] sm:mt-14 m-auto pt-20 h-[700px] sm:pt-10">
+      <div className="w-full md:w-[100%] lg:w-[100%] sm:mt-14 m-auto pt-20 h-[900px] sm:pt-10">
         {!selectedPlan && (
-          <img src="/images/recharge2.png" className="h-[150px]"/>
+          <img src="/images/recharge2.png" className="h-[150px]" />
         )}
 
         {/* Conditional Rendering Based on Recharge Result */}
@@ -297,35 +311,38 @@ const Recharge = () => {
             {plans.length === 0 && (
               <div className="mt-10">
                 <div className="flex flex-wrap sm:justify-between w-[100%] sm:w-[50%] m-auto justify-center shadow-xl py-1 px-4 rounded-lg">
-                <div className="mb-6 w-full sm:w-auto sm:mr-4">
-  <div className="flex items-center bg-white shadow-lg h-[70px] rounded-md px-4 py-2 border border-gray-200">
-    {/* Left Icon (Phone) */}
-    <div className="text-red-500">
-      <FontAwesomeIcon icon={faPhoneAlt} className="text-xl" />
-    </div>
+                  <div className="mb-6 w-full sm:w-auto sm:mr-4">
+                    <div className="flex items-center bg-white shadow-lg h-[70px] rounded-md px-4 py-2 border border-gray-200">
+                      {/* Left Icon (Phone) */}
+                      <div className="text-red-500">
+                        <FontAwesomeIcon
+                          icon={faPhoneAlt}
+                          className="text-xl"
+                        />
+                      </div>
 
-    {/* Divider */}
-    <div className="border-l h-6 mx-3 border-gray-300"></div>
+                      {/* Divider */}
+                      <div className="border-l h-6 mx-3 border-gray-300"></div>
 
-    {/* Input Field */}
-    <input
-      type="text"
-      placeholder="Enter Mobile Number"
-      className="w-full focus:outline-none text-red-500 placeholder-red-500"
-      value={number}
-      onChange={handleNumberChange}
-    />
+                      {/* Input Field */}
+                      <input
+                        type="text"
+                        placeholder="Enter Mobile Number"
+                        className="w-full focus:outline-none text-red-500 placeholder-red-500 text-xl"
+                        value={number}
+                        onChange={handleNumberChange}
+                      />
 
-    {/* Right Icon (User) */}
-    <div className="text-red-500">
-      <FontAwesomeIcon icon={faUser} className="text-xl" />
-    </div>
-  </div>
-</div>
-                  <div className="mb-4 w-full sm:w-auto sm:mr-4">
+                      {/* Right Icon (User) */}
+                      <div className="text-red-500">
+                        <FontAwesomeIcon icon={faUser} className="text-xl" />
+                      </div>
+                    </div>
+                  </div>
+                  <div className="mb-4 w-full sm:w-auto sm:mr-4 h-[70px] text-red-500 shadow-lg">
                     <select
                       name="operator"
-                      className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline cursor-pointer"
+                      className="shadow appearance-none border rounded h-[70px] text-xl w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline cursor-pointer"
                       onChange={(e) => {
                         const operatorName = e.target.value;
                         setSelectedOperator(operatorName);
@@ -343,7 +360,7 @@ const Recharge = () => {
 
                   {/* Get Plans Button */}
                   <button
-                    className={`bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline w-full sm:w-auto mb-6 flex items-center justify-center ${
+                    className={`bg-red-500 mt-10 hover:bg-red-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline w-full sm:w-auto mb-6 flex items-center justify-center ${
                       loadingPlans ? "opacity-50 cursor-not-allowed" : ""
                     }`}
                     onClick={fetchPlans}
@@ -382,59 +399,113 @@ const Recharge = () => {
             )}
 
             {/* Plans List - Conditionally Rendered */}
-            {!selectedPlan && (
-              <div className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-10 max-h-[500px] overflow-y-auto mt-10 w-[90%] sm:w-[50%] m-auto">
-                <ul>
-                  {plans.length > 0 ? (
-                    plans.map((plan, index) => (
-                      <li
-                        key={index}
-                        className="mb-4 p-4 bg-gray-100 rounded shadow-md cursor-pointer hover:bg-blue-100 transition-all"
-                      >
-                        <p className="text-black font-bold">MRP: ₹{plan.mrp}</p>
-                        <p className="text-gray-500">{plan.description}</p>
-                        <button
-                          className="mt-6 bg-green-500 text-white px-4 py-2 font-bold rounded-lg"
+            <div>
+              {/* Filter Section */}
+              {/* Filter Section */}
+              {
+                !selectedPlan && (
+                  <div className="bg-white rounded pt-6 pb-8 w-[95%] sm:w-[50%] m-auto">
+                  <div className="flex justify-around border-b-1 mt-10 text-lg font-bold text-red-600">
+                    <button
+                      className={filter === "all" ? "underline" : ""}
+                      onClick={() => setFilter("all")}
+                    >
+                      All
+                    </button>
+                    <div className="border border-red-700"></div>
+                    <button
+                      className={filter === "3g4g" ? "underline" : ""}
+                      onClick={() => setFilter("3g4g")}
+                    >
+                      Data Add on
+                    </button>
+                    <div className="border border-red-700"></div>
+                    <button
+                      className={filter === "combo" ? "underline" : ""}
+                      onClick={() => setFilter("combo")}
+                    >
+                      Combo
+                    </button>
+                    <div className="border border-red-700"></div>
+                    <button
+                      className={filter === "topup" ? "underline" : ""}
+                      onClick={() => setFilter("topup")}
+                    >
+                      Topup
+                    </button>
+                  </div>
+                  <hr className="mt-2" />
+                </div>
+                )
+              }
+             
+
+              {/* Plan List Section */}
+              {!selectedPlan && (
+                <div className="bg-white shadow-md rounded px-1 pt-6 pb-8 mb-10 max-h-[500px] overflow-y-auto w-[90%] sm:w-[50%] m-auto">
+                  <ul>
+                    {filteredPlans.length > 0 ? (
+                      filteredPlans.map((plan, index) => (
+                        <li
+                          key={index}
+                          className="mb-4 bg-gray-100 rounded shadow-md cursor-pointer transition-all flex items-center py-2 justify-between"
                           onClick={() => {
                             setSelectedPlan(plan);
-                            handleType(plan.description);
                           }}
                         >
-                          Select Plan
-                        </button>
-                      </li>
-                    ))
-                  ) : (
-                    <p className="text-gray-600 text-center">
-                      Your searched plans will appear here
-                    </p>
-                  )}
-                </ul>
-              </div>
-            )}
+                          {/* Price and Validity Section */}
+                          <div>
+                            <p className="text-red-600 font-bold text-xl">
+                              ₹{plan.mrp}
+                            </p>
+                          </div>
+                          {/* Plan Description */}
+                          <div className="text-gray-500 ml-4 flex-1 text-left">
+                            <p className="text-gray-700 font-semibold">
+                              Validity: {plan.validity}
+                            </p>
+                            <p>
+                              {plan.description
+                                .split(" ")
+                                .slice(0, 30)
+                                .join(" ")}
+                              ...
+                            </p>
+                          </div>
+                        </li>
+                      ))
+                    ) : (
+                      <p className="text-gray-600 text-center">
+                        No plans found for the selected filter
+                      </p>
+                    )}
+                  </ul>
+                </div>
+              )}
+            </div>
 
             {/* Selected Plan Details */}
             {selectedPlan && (
-              <div className="mt-6 bg-blue-200 font-bold p-6 rounded-lg shadow-lg w-[90%] sm:w-[50%] m-auto">
-                <h3 className="text-lg font-bold text-center text-green-700 mb-4">
+              <div className="mt-6 bg-red-700 font-bold p-6 rounded-lg text-white shadow-lg w-[90%] sm:w-[50%] m-auto">
+                <h3 className="text-lg font-bold text-center  mb-4">
                   Selected Plan
                 </h3>
-                <p className="text-center text-gray-700 mb-2">
+                <p className="text-center  mb-2">
                   Operator: {selectedPlan.operator_name}
                 </p>
-                <p className="text-center text-gray-700 mb-2">
+                <p className="text-center  mb-2">
                   Amount: ₹{selectedPlan.mrp}
                 </p>
-                <p className="text-center text-gray-700 mb-2">
+                <p className="text-center  mb-2">
                   Validity: {selectedPlan.validity} days
                 </p>
-                <p className="text-center text-gray-700 mb-2">
+                <p className="text-center  mb-2">
                   Talktime: {selectedPlan.talktime} minutes
                 </p>
-                <p className="text-center text-gray-700 mb-2">
+                <p className="text-center  mb-2">
                   Data Benefits: {selectedPlan.data} GB
                 </p>
-                <p className="text-center text-gray-700">
+                <p className="text-center ">
                   Description: {selectedPlan.description}
                 </p>
 
@@ -490,13 +561,13 @@ const Recharge = () => {
           </>
         ) : (
           // Recharge Success Message
-          <div className="flex flex-col items-center justify-center bg-green-100 p-8 shadow-md mt-[150px] sm:mt-[70px] w-[90%] sm:w-[40%] m-auto rounded-xl">
-            <h3 className="text-2xl font-bold text-green-700 mb-4">
+          <div className="flex flex-col items-center justify-center bg-red-600 text-white p-8 shadow-md mt-[150px] sm:mt-[70px] w-[90%] sm:w-[40%] m-auto rounded-xl">
+            <h3 className="text-2xl font-bold mb-4">
               Recharge Successful!
             </h3>
-            <p className="text-center text-gray-700 mb-6">{rechargeResult}</p>
+            <p className="text-center  mb-6">{rechargeResult}</p>
             <button
-              className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+              className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
               onClick={resetRecharge}
             >
               Recharge Again
