@@ -2,7 +2,7 @@ import React from 'react';
 
 const Marquee = () => {
   return (
-    <div className="overflow-hidden whitespace-nowrap bg-red-600 text-white h-10 flex items-center">
+    <div className="overflow-hidden whitespace-nowrap mt-12 bg-red-600 text-white h-10 flex items-center">
       <div className="inline-block animate-marquee">
         <p className="text-lg font-bold">
           Pay your pending bills | Mobile Recharge | DTH Recharge | Electric Bill | Gas Recharge | Piped Gas Bill | Water Bill | Loan & EMI.
