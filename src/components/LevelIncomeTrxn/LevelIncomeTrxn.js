@@ -27,13 +27,13 @@ const LevelIncomeTrxn = () => {
 
   return (
     <Layout>
-      <div className="flex pt-28 min-h-screen bg-gradient-to-b from-green-400  justify-center to-blue-500">
+      <div className="flex pt-28 min-h-screen bg-gradient-to-b from-red-600 to-white  justify-center">
         <div className="w-full sm:w-[95%] p-6 ">
-          <h2 className="text-3xl font-semibold text-gray-800 mb-6">Level Income List</h2>
+          <h2 className="text-3xl font-semibold text-white mb-6">Level Income List</h2>
           <div className="overflow-x-auto w-full">
             <table className="min-w-full text-sm bg-white border border-gray-300 rounded-lg shadow-md">
               <thead>
-                <tr className="bg-green-700 text-white">
+                <tr className="bg-red-700 text-white">
                   <th className="py-3 px-4 border-b text-center w-[50px]">S.No</th>
                   <th className="py-3 px-4 border-b text-center">From User</th>
                   <th className="py-3 px-4 border-b text-center">Amount</th>

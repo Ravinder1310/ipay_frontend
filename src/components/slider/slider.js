@@ -3,6 +3,9 @@ import { useAuth } from '../../context/auth';
 
 const ImageSlider = () => {
   const images = [
+    "/images/recharge_1.png",
+    "/images/recharge2.png",
+    "/images/recharge3.png",
     '/images/abcde.png', // Replace with actual image paths
     '/images/abcdef.png',
     '/images/abcdefg.png'

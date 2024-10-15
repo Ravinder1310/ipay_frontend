@@ -66,14 +66,15 @@ const Login = () => {
 
   return (
     <div
-      className="h-screen sm:h-auto flex justify-center items-center sm:pb-10 bg-blue-200"
+      className="h-screen sm:h-auto flex justify-center items-center sm:pb-10 bg-red-700"
     >
       <Toaster />
       <div className="bg-white rounded-xl text-black shadow-lg p-6 w-[85%] sm:w-[32%] h-[540px] sm:h-[600px]  sm:mt-8">
         {/* Zed Pay Logo */}
+        <h1 className="text-4xl text-red-700 font-bold mb-2">Welcome to I-Pay</h1>
         <div className="flex justify-center mb-4">
           <img
-            src="/images/main_logo.png" // Use your logo image
+            src="/images/main.png" // Use your logo image
             alt="I Pay Logo"
             className="w-28 h-28 cursor-pointer"
             onClick={() => {navigate("/")}}

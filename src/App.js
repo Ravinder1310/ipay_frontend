@@ -40,6 +40,7 @@ import ChangePassword from './pages/Admin/ChangePassword/ChangePassword.js';
 import AllWithdrawRequest from "./pages/Admin/AllWithdrawRequest/AllWithdrawRequest.js";
 import GetCustomer from './components/payout/GetCustomer.js';
 import FundTransfer2 from './components/payout/FundTransfer.js';
+import IdCard from './pages/idCard/IdCard.js';
 
 function App() {
   return (
@@ -51,6 +52,7 @@ function App() {
         <Route path='user/fund-transfer' element={<FundTransfer/>}/>
         <Route path='user/fund-transfers' element={<FundTransfer2/>}/>
         <Route path='user/add-beneficiary' element={<AddBeneficiary/>}/>
+        <Route path='user/id-card' element={<IdCard/>}/>
         <Route path='user/fund-transfer' element={<FundTransfer/>}/>
         <Route path='user/refund-otp' element={<RefundOTP/>}/>
         <Route path='user/refund' element={<Refund/>}/>

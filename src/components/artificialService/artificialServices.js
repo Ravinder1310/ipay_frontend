@@ -12,9 +12,21 @@ import {
   faThLarge
 } from "@fortawesome/free-solid-svg-icons"; // Import necessary icons
 import { useAuth } from "../../context/auth";
+import {
+  Modal,
+  ModalOverlay,
+  ModalContent,
+  ModalHeader,
+  ModalFooter,
+  ModalBody,
+  ModalCloseButton,
+  Button,
+  useDisclosure
+} from "@chakra-ui/react";
 
 const ArtificialServices = () => {
   const [auth] = useAuth();
+  const { isOpen, onOpen, onClose } = useDisclosure();
 
 
   const handleToast = () => {
@@ -36,7 +48,7 @@ const ArtificialServices = () => {
       <div className="flex flex-wrap justify-between gap-x-4 gap-y-1">
 
         {/* Aadhaar Card */}
-        <div className="w-[20%] flex flex-col items-center justify-center h-[160px]" onClick={handleToast}>
+        <div className="w-[20%] flex flex-col items-center justify-center h-[160px]" onClick={onOpen}>
           <div className="rounded-full shadow-xl shadow-slate-300 p-4 flex justify-center items-center">
             <FontAwesomeIcon icon={faIdCard} size="1x" className="text-2xl" />
           </div>
@@ -44,7 +56,7 @@ const ArtificialServices = () => {
         </div>
 
         {/* PAN Card */}
-        <div className="w-[20%] flex flex-col items-center justify-center h-[160px]" onClick={handleToast}>
+        <div className="w-[20%] flex flex-col items-center justify-center h-[160px]" onClick={onOpen}>
           <div className="rounded-full shadow-xl shadow-slate-300 p-4 flex justify-center items-center">
             <FontAwesomeIcon icon={faCreditCard} size="1x" className="text-2xl" />
           </div>
@@ -52,7 +64,7 @@ const ArtificialServices = () => {
         </div>
 
         {/* Income Tax */}
-        <div className="w-[20%] flex flex-col items-center justify-center h-[160px]" onClick={handleToast}>
+        <div className="w-[20%] flex flex-col items-center justify-center h-[160px]" onClick={onOpen}>
           <div className="rounded-full shadow-xl shadow-slate-300 p-4 flex justify-center items-center">
             <FontAwesomeIcon icon={faFileInvoiceDollar} size="1x" className="text-2xl" />
           </div>
@@ -60,7 +72,7 @@ const ArtificialServices = () => {
         </div>
 
         {/* E-Card */}
-        <div className="w-[20%] flex flex-col items-center justify-center h-[160px]" onClick={handleToast}>
+        <div className="w-[20%] flex flex-col items-center justify-center h-[160px]" onClick={onOpen}>
           <div className="rounded-full shadow-xl shadow-slate-300 p-4 flex justify-center items-center">
             <FontAwesomeIcon icon={faDigitalTachograph} size="1x" className="text-2xl" />
           </div>
@@ -68,7 +80,7 @@ const ArtificialServices = () => {
         </div>
 
         {/* Voter Card */}
-        <div className="w-[20%] flex flex-col items-center justify-center h-[160px]" onClick={handleToast}>
+        <div className="w-[20%] flex flex-col items-center justify-center h-[160px]" onClick={onOpen}>
           <div className="rounded-full shadow-xl shadow-slate-300 p-4 flex justify-center items-center">
             <FontAwesomeIcon icon={faVoteYea} size="1x" className="text-2xl" />
           </div>
@@ -76,7 +88,7 @@ const ArtificialServices = () => {
         </div>
 
         {/* Passport */}
-        <div className="w-[20%] flex flex-col items-center justify-center h-[160px]" onClick={handleToast}>
+        <div className="w-[20%] flex flex-col items-center justify-center h-[160px]" onClick={onOpen}>
           <div className="rounded-full shadow-xl shadow-slate-300 p-4 flex justify-center items-center">
             <FontAwesomeIcon icon={faPassport} size="1x" className="text-2xl" />
           </div>
@@ -84,7 +96,7 @@ const ArtificialServices = () => {
         </div>
 
         {/* Post Office */}
-        <div className="w-[20%] flex flex-col items-center justify-center h-[160px]" onClick={handleToast}>
+        <div className="w-[20%] flex flex-col items-center justify-center h-[160px]" onClick={onOpen}>
           <div className="rounded-full shadow-xl shadow-slate-300 p-4 flex justify-center items-center">
             <FontAwesomeIcon icon={faMailBulk} size="1x" className="text-2xl" />
           </div>
@@ -92,13 +104,39 @@ const ArtificialServices = () => {
         </div>
 
         {/* More Options */}
-        <div className="w-[20%] flex flex-col items-center justify-center h-[160px]" onClick={handleToast}>
+        <div className="w-[20%] flex flex-col items-center justify-center h-[160px]" onClick={onOpen}>
           <div className="rounded-full shadow-xl shadow-slate-300 p-4 flex justify-center items-center">
             <FontAwesomeIcon icon={faThLarge} size="1x" className="text-2xl" />
           </div>
           <h4 className="mt-3 text-md font-semibold text-center h-16">More Options</h4>
         </div>
       </div>
+      <Modal isOpen={isOpen} onClose={onClose} isCentered>
+  <ModalOverlay />
+  <ModalContent
+    maxW="90%" // Set the width to 90% of the screen
+    borderRadius="lg" // Add rounded corners
+    boxShadow="2xl" // Add a soft shadow for depth
+    bg="yellow" // Set background color to red
+    color="black" // Ensure text is white for contrast
+    margin="auto"
+    marginTop="160px"
+    padding="20px 20px"
+  >
+    <ModalCloseButton size="xl" fontWeight="600" justifyContent="right"  color="black" /> {/* White close button for contrast */}
+    <ModalBody textAlign="center" p={6}>
+      <img
+        src="/images/coming.gif"
+        alt="Coming Soon"
+        className="w-[80%] mx-auto" // Center the image and make it responsive
+      />
+    </ModalBody>
+
+    <ModalFooter justifyContent="right">
+      
+    </ModalFooter>
+  </ModalContent>
+</Modal>
     </div>
   );
 };

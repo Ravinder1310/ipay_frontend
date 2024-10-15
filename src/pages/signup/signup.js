@@ -21,6 +21,7 @@ const SignUp = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [referredBy, setReferredBy] = useState("");
   const [selectedPosition, setSelectedPosition] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
   const navigate = useNavigate();
   const [user1, setUser1] = useState();
   const [user2, setUser2] = useState();
@@ -55,6 +56,9 @@ const SignUp = () => {
     } else if (!/^\d{10}$/.test(mobileNumber)) {
       toast("Please enter a valid 10-digit mobile number."); // Notify user about invalid mobile number
       return;
+    }else if(password !== confirmPassword){
+      toast("Confirm password should be same as the password!"); // Notify user about invalid mobile number
+      return;
     }
 
     setLoading(true); // Set loading to true when the form is submitted
@@ -80,6 +84,15 @@ const SignUp = () => {
           mobileNumber,
           registrationDate: new Date().toLocaleString(),
         });
+        console.log({
+          name,
+          email,
+          mobileNumber, 
+          password,
+          referredBy,
+          preferredSide: selectedPosition,
+        });
+        
         toast(response.data.message); // Notify user on success
         setTimeout(() => {
           setShowCongrats(true); // Show congratulation modal after 2 seconds
@@ -108,32 +121,31 @@ const SignUp = () => {
     setShowPassword(!showPassword);
   };
 
-  const handlePositionSelect = (position) => {
-    setSelectedPosition(position);
-  };
-
 
   useEffect(() => {
     // Extract the referral code from the URL
     const queryParams = new URLSearchParams(window.location.search);
     const tempReferralCode = queryParams.get('referral');
+    const tempSide = queryParams.get('side');
+
 
     // If referral code exists, set it in the referredBy field
-    if (tempReferralCode) {
+    if (tempReferralCode && tempSide) {
       setReferredBy(tempReferralCode);
+      setSelectedPosition(tempSide);
     }
   }, []);
 
 
   return (
     <div
-      className="h-auto sm:h-full flex justify-center items-center sm:pb-10 pb-20 bg-blue-200"
+      className="h-auto sm:h-full flex justify-center items-center sm:pb-10 pb-20 bg-red-700"
     >
       <Toaster />
       <div className="bg-white rounded-xl text-black shadow-lg p-6 w-[90%] sm:w-[32%] h-[700px] sm:h-auto sm:mt-8 mt-10">
         <div className="flex justify-center mb-4">
           <img
-            src="/images/main_logo.png" // Use your logo image
+            src="/images/main.png" // Use your logo image
             alt="I Pay Logo"
             className="w-28 h-28 cursor-pointer"
             onClick={() => {
@@ -208,6 +220,24 @@ const SignUp = () => {
             </span>
           </div>
 
+
+          <div className="relative w-full">
+            <input
+              type={showPassword ? "text" : "password"}
+              value={confirmPassword}
+              onChange={(e) => setConfirmPassword(e.target.value)}
+              className="w-full h-12 px-4 rounded-full border-none bg-gray-50 shadow-lg focus:ring focus:outline-none focus:ring-red-300 transition duration-300"
+              placeholder="Confirm Password"
+              required
+            />
+            <span
+              className="absolute right-4 top-1/2 transform -translate-y-1/2 cursor-pointer text-gray-500"
+              onClick={togglePasswordVisibility}
+            >
+              <FontAwesomeIcon icon={showPassword ? faEyeSlash : faEye} />
+            </span>
+          </div>
+
           {/* Referral Code */}
           <div className="relative w-full">
             <input
@@ -222,34 +252,6 @@ const SignUp = () => {
               className="absolute right-4 top-1/2 transform -translate-y-1/2 text-gray-500"
             />
           </div>
-
-          {/* Position Selection */}
-          <h2 className="text-gray-600 text-left">Select Position</h2>
-          <div className="flex gap-5 justify-between">
-            <button
-              type="button"
-              className={`w-full py-2 rounded-full transition-all duration-300 ${
-                selectedPosition === "left"
-                  ? "bg-blue-500 text-white"
-                  : "bg-gray-100 text-gray-600"
-              }`}
-              onClick={() => handlePositionSelect("left")}
-            >
-              Left
-            </button>
-            <button
-              type="button"
-              className={`w-full py-2 rounded-full transition-all duration-300 ${
-                selectedPosition === "right"
-                  ? "bg-blue-500 text-white"
-                  : "bg-gray-100 text-gray-600"
-              }`}
-              onClick={() => handlePositionSelect("right")}
-            >
-              Right
-            </button>
-          </div>
-
           {/* Submit Button */}
           <button
             type="submit"
@@ -272,7 +274,7 @@ const SignUp = () => {
         {/* Congratulations Modal */}
         {showCongrats && userDetails && (
           <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50">
-            <div className="bg-blue-600 p-3 rounded-lg shadow-lg w-96 text-center text-white">
+            <div className="bg-red-600 p-3 rounded-lg shadow-lg w-96 text-center text-white">
               {/* <h2 className="text-2xl font-bold mb-4">Congratulations!</h2> */}
               <img src="/images/congrats.gif" className="w-[200px] m-auto" alt="error"/>
               <p className="text-white mb-4">
@@ -333,7 +335,7 @@ const SignUp = () => {
               </div>
               <button
                 onClick={() => navigate("/login")}
-                className="bg-red-600 text-white py-2 px-4 rounded-full shadow-lg transform transition-transform duration-300 hover:scale-105 active:scale-95 hover:shadow-2xl active:shadow-sm"
+                className="bg-red-800 text-white py-2 px-4 rounded-full shadow-lg transform transition-transform duration-300 hover:scale-105 active:scale-95 hover:shadow-2xl active:shadow-sm"
               >
                 Go to Login
               </button>

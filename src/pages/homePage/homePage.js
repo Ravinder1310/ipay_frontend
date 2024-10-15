@@ -27,9 +27,9 @@ const HomePage = () => {
       <ProgressBar/>
       <DashboardSection/>
       <Marquee/>
+      <RechargeAndBill/>
       <MainTransfer/>
       <Slider2/>
-      <RechargeAndBill/>
       <Banking/>
       <CibilScore/>
       <Travels/>

@@ -4,6 +4,8 @@ import axios from "axios";
 import toast, { Toaster } from "react-hot-toast";
 import Confetti from "react-confetti"; // Import Confetti
 import { useAuth } from "../context/auth";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faPhoneAlt, faUser } from "@fortawesome/free-solid-svg-icons";
 
 const Recharge = () => {
   const [number, setNumber] = useState("");
@@ -283,11 +285,9 @@ const Recharge = () => {
         </div>
       )}
 
-      <div className="w-full md:w-[100%] lg:w-[100%] sm:mt-14 m-auto pt-20 bg-gray-300 h-[700px] sm:pt-10">
+      <div className="w-full md:w-[100%] lg:w-[100%] sm:mt-14 m-auto pt-20 h-[700px] sm:pt-10">
         {!selectedPlan && (
-          <h2 className="text-2xl font-bold text-center mb-6 text-orange-500">
-            Check Available Plans
-          </h2>
+          <img src="/images/recharge2.png" className="h-[150px]"/>
         )}
 
         {/* Conditional Rendering Based on Recharge Result */}
@@ -296,16 +296,32 @@ const Recharge = () => {
             {/* Dropdown for Operator Selection and Mobile Number Input */}
             {plans.length === 0 && (
               <div className="mt-10">
-                <div className="flex flex-wrap sm:justify-between w-[70%] sm:w-[50%] m-auto justify-center shadow-xl py-10 px-4 bg-blue-200 rounded-lg">
-                  <div className="mb-6 w-full sm:w-auto sm:mr-4">
-                    <input
-                      type="text"
-                      placeholder="Enter your mobile number"
-                      className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                      value={number}
-                      onChange={handleNumberChange}
-                    />
-                  </div>
+                <div className="flex flex-wrap sm:justify-between w-[100%] sm:w-[50%] m-auto justify-center shadow-xl py-1 px-4 rounded-lg">
+                <div className="mb-6 w-full sm:w-auto sm:mr-4">
+  <div className="flex items-center bg-white shadow-lg h-[70px] rounded-md px-4 py-2 border border-gray-200">
+    {/* Left Icon (Phone) */}
+    <div className="text-red-500">
+      <FontAwesomeIcon icon={faPhoneAlt} className="text-xl" />
+    </div>
+
+    {/* Divider */}
+    <div className="border-l h-6 mx-3 border-gray-300"></div>
+
+    {/* Input Field */}
+    <input
+      type="text"
+      placeholder="Enter Mobile Number"
+      className="w-full focus:outline-none text-red-500 placeholder-red-500"
+      value={number}
+      onChange={handleNumberChange}
+    />
+
+    {/* Right Icon (User) */}
+    <div className="text-red-500">
+      <FontAwesomeIcon icon={faUser} className="text-xl" />
+    </div>
+  </div>
+</div>
                   <div className="mb-4 w-full sm:w-auto sm:mr-4">
                     <select
                       name="operator"

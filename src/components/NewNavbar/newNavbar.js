@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState } from "react";
 import {
   Drawer,
   DrawerBody,
@@ -7,11 +7,11 @@ import {
   Button,
   Box,
   IconButton,
-  Image
-} from '@chakra-ui/react';
-import { useAuth } from '../../context/auth';
+  Image,
+} from "@chakra-ui/react";
+import { useAuth } from "../../context/auth";
 import {
-  FaPhone,
+  FaShoppingCart ,
   FaHome,
   FaIdCard,
   FaEdit,
@@ -20,11 +20,11 @@ import {
   FaFilePdf,
   FaKey,
   FaExchangeAlt,
-  FaTimes
-} from 'react-icons/fa';
-import { useNavigate } from 'react-router-dom';
-import toast, { Toaster } from 'react-hot-toast';
-import axios from 'axios';
+  FaTimes,
+} from "react-icons/fa";
+import { useNavigate } from "react-router-dom";
+import toast, { Toaster } from "react-hot-toast";
+import axios from "axios";
 
 const NewNavbar = () => {
   const [auth, setAuth] = useAuth();
@@ -85,62 +85,105 @@ const NewNavbar = () => {
   return (
     <div>
       <Toaster />
-      <div className={`${auth?.token ? 'flex justify-between z-40 shadow-2xl bg-white fixed w-full' : 'hidden'}`}>
-        <img src='/images/main_logo.png' className='w-20 h-14 cursor-pointer' alt='error' onClick={() => { navigate("/") }} />
+      <div
+        className={`${
+          auth?.token
+            ? "flex justify-between z-40 items-center shadow-2xl bg-white p-2 fixed w-full"
+            : "hidden"
+        }`}
+      >
+        {/* <img src='/images/main_logo.png' className='w-20 h-14 cursor-pointer' alt='error' onClick={() => { navigate("/") }} /> */}
+        <div className="flex items-center gap-4">
         <img
-          src='/images/new_menu.png'
-          className='w-20 h-14 cursor-pointer'
-          alt='error'
+          src="/images/dark.png"
+          className="w-10 h-8 cursor-pointer"
+          alt="error"
+          onClick={toggleDrawer}
+        />
+        <div className="border-2 border-red-500 rounded-lg w-[200px] h-[60px] flex items-center px-2 py-4 bg-white"  onClick={() => {navigate('/')}}>
+      {/* Left side with the "Z" logo */}
+      <div className="">
+        <FaShoppingCart className="text-red-500 text-xl" />
+      </div>
+
+      {/* Right side with text and icon */}
+      <div className="ml-4 text-left">
+        <div className="text-red-500 font-extrabold text-lg">I-BAZAAR</div>
+        <div className="text-red-500 text-sm">#Cashback Har Bar 🛍️</div>
+      </div>
+    </div>
+        </div>
+
+        <img
+          src="/images/bell1.png"
+          className="w-16 h-12 cursor-pointer"
+          alt="error"
           onClick={toggleDrawer}
         />
       </div>
 
       {/* Chakra UI Drawer */}
-      <div className='z-50'>
-      <Drawer
-        isOpen={isDrawerOpen}
-        placement="right"
-        onClose={toggleDrawer}  // This will close the drawer
-      >
-        <DrawerOverlay />
-        <DrawerContent
-          bg="white"
-          maxWidth="85vw"
-          width="85vw"
-          marginTop={'55px'}
-          zIndex={"50"}
+      <div className="z-50">
+        <Drawer
+          isOpen={isDrawerOpen}
+          placement="left"
+          onClose={toggleDrawer} // This will close the drawer
         >
-          {/* Top Section with User Info and Close Button */}
-          <Box bg="red.600" p={4} borderTopRightRadius="20px" position="relative">
-            <Box display="flex" bg={'#b71b1d'} marginTop={'-5px'} marginLeft={"-4px"} height={'70px'} width={'103%'} padding={'30px'} gap={'20px'} alignItems="center" mb={4}>
-              <Image
-                src='/images/avatar.png'
-                borderRadius="full"
-                boxSize="50px"
-                mr={3}
-              />
-              <Box color="white">
-                <div className='text-lg font-bold'>{user?.userName}</div>
-                <div className='text-sm'>{user?.referralCode}</div>
+          <DrawerOverlay />
+          <DrawerContent
+            bg="white"
+            maxWidth="85vw"
+            width="85vw"
+            marginTop={"75px"}
+            zIndex={"50"}
+          >
+            {/* Top Section with User Info and Close Button */}
+            <Box
+              bg="red.600"
+              p={4}
+              borderTopRightRadius="20px"
+              position="relative"
+            >
+              <Box
+                display="flex"
+                bg={"#b71b1d"}
+                marginTop={"-5px"}
+                marginLeft={"-4px"}
+                height={"70px"}
+                width={"101%"}
+                padding={"30px"}
+                gap={"20px"}
+                alignItems="center"
+                mb={4}
+              >
+                <Image
+                  src="/images/avatar.png"
+                  borderRadius="full"
+                  boxSize="50px"
+                  mr={3}
+                />
+                <Box color="white">
+                  <div className="text-lg font-bold">{user?.userName}</div>
+                  <div className="text-sm">{user?.referralCode}</div>
+                </Box>
+
+                {/* Close Button in the profile section */}
+                <IconButton
+                  aria-label="Close Drawer"
+                  icon={<FaTimes />}
+                  onClick={toggleDrawer} // Close the drawer when clicked
+                  colorScheme="whiteAlpha"
+                  color="white"
+                  position="absolute"
+                  top="25px"
+                  right="15px"
+                  bg="transparent"
+                  _hover={{ bg: "red.500" }}
+                />
               </Box>
 
-              {/* Close Button in the profile section */}
-              <IconButton
-                aria-label="Close Drawer"
-                icon={<FaTimes />}
-                onClick={toggleDrawer}  // Close the drawer when clicked
-                colorScheme="whiteAlpha"
-                color="white"
-                position="absolute"
-                top="25px"
-                right="15px"
-                bg="transparent"
-                _hover={{ bg: 'red.500' }}
-              />
-            </Box>
-
-            {/* Sponsor and Company Buttons */}
-            {/* <Box display="flex" marginTop={'10px'} p={'10px 10px'} marginBottom={'10px'} justifyContent="space-between">
+              {/* Sponsor and Company Buttons */}
+              {/* <Box display="flex" marginTop={'10px'} p={'10px 10px'} marginBottom={'10px'} justifyContent="space-between">
               <Button
                 leftIcon={<FaPhone />}
                 colorScheme="whiteAlpha"
@@ -170,36 +213,77 @@ const NewNavbar = () => {
                 Company
               </Button>
             </Box> */}
-          </Box>
+            </Box>
 
-          {/* Drawer Body - Menu Items */}
-          <DrawerBody mt={0} p={'10px 30px'}>
-            <ul className='space-y-6 text-red-700 text-xl'>
-              <li className='flex items-center space-x-6 hover:cursor-pointer hover:text-black' onClick={() => { navigate("/") }}>
-                <FaHome /> <span>Dashboard</span>
-              </li>
-              <li className='flex items-center space-x-6 hover:cursor-pointer hover:text-black' onClick={() => { navigate("/users/user/tree") }}>
-                <FaIdCard /> <span>My Team</span>
-              </li>
-              <li className='flex items-center space-x-6 hover:cursor-pointer hover:text-black' onClick={() => { navigate("/users/user/matching-income") }}>
-                <FaEdit /> <span>Matching Income</span>
-              </li>
-              <li className='flex items-center space-x-6 hover:cursor-pointer hover:text-black' onClick={() => { navigate("/users/user/level-income") }}>
-                <FaUniversity /> <span>Level Income</span>
-              </li>
-              <li className='flex items-center space-x-6 hover:cursor-pointer hover:text-black' onClick={() => { navigate("/users/user/recharge-income") }}>
-                <FaUniversity /> <span>Recharge History & Income</span>
-              </li>
-              <li className='flex items-center space-x-6 hover:cursor-pointer hover:text-black' onClick={() => { navigate("/users/user/invite") }}>
-                <FaImages /> <span>Invitation</span>
-              </li>
-              <li className='flex items-center space-x-6 hover:cursor-pointer hover:text-black' onClick={handleLogout}>
-                <FaFilePdf /> <span>Log Out</span>
-              </li>
-            </ul>
-          </DrawerBody>
-        </DrawerContent>
-      </Drawer>
+            {/* Drawer Body - Menu Items */}
+            <DrawerBody mt={0} p={"10px 30px"}>
+              <ul className="space-y-6 text-red-700 text-xl">
+                <li
+                  className="flex items-center space-x-6 hover:cursor-pointer hover:text-black"
+                  onClick={() => {
+                    navigate("/");
+                  }}
+                >
+                  <FaHome /> <span>Dashboard</span>
+                </li>
+                <li
+                  className="flex items-center space-x-6 hover:cursor-pointer hover:text-black"
+                  onClick={() => {
+                    navigate("/users/user/id-card");
+                  }}
+                >
+                  <FaIdCard /> <span>ID Card</span>
+                </li>
+                <li
+                  className="flex items-center space-x-6 hover:cursor-pointer hover:text-black"
+                  onClick={() => {
+                    navigate("/users/user/tree");
+                  }}
+                >
+                  <FaIdCard /> <span>My Team</span>
+                </li>
+                <li
+                  className="flex items-center space-x-6 hover:cursor-pointer hover:text-black"
+                  onClick={() => {
+                    navigate("/users/user/matching-income");
+                  }}
+                >
+                  <FaEdit /> <span>Matching Income</span>
+                </li>
+                <li
+                  className="flex items-center space-x-6 hover:cursor-pointer hover:text-black"
+                  onClick={() => {
+                    navigate("/users/user/level-income");
+                  }}
+                >
+                  <FaUniversity /> <span>Level Income</span>
+                </li>
+                <li
+                  className="flex items-center space-x-6 hover:cursor-pointer hover:text-black"
+                  onClick={() => {
+                    navigate("/users/user/recharge-income");
+                  }}
+                >
+                  <FaUniversity /> <span>Recharge History & Income</span>
+                </li>
+                <li
+                  className="flex items-center space-x-6 hover:cursor-pointer hover:text-black"
+                  onClick={() => {
+                    navigate("/users/user/invite");
+                  }}
+                >
+                  <FaImages /> <span>Invitation</span>
+                </li>
+                <li
+                  className="flex items-center space-x-6 hover:cursor-pointer hover:text-black"
+                  onClick={handleLogout}
+                >
+                  <FaFilePdf /> <span>Log Out</span>
+                </li>
+              </ul>
+            </DrawerBody>
+          </DrawerContent>
+        </Drawer>
       </div>
     </div>
   );
