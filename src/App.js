@@ -44,6 +44,7 @@ import IdCard from './pages/idCard/IdCard.js';
 import Zoom from './pages/zoom/zoom.js';
 import QrCode from './pages/qrCode/QrCode.js';
 import PrimeMembershipCard from './pages/primeMember/PrimeMember.js';
+import Pdf_Video from './components/Pdf&Video/Pdf_Video.js';
 
 function App() {
   return (
@@ -73,6 +74,7 @@ function App() {
         <Route path='user/zoom-meeting' element={<Zoom/>}/>
         <Route path='user/qr-code' element={<QrCode/>}/>
         <Route path='user/packages' element={<Package/>}/>
+        <Route path='user/pdf-videos' element={<Pdf_Video/>}/>
         <Route path='user/my-profile' element={<MyProfile/>}/>
         <Route path='user/package-details' element={<Package_Info/>}/>
       </Route>
