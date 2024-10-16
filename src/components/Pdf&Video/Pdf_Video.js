@@ -6,8 +6,8 @@ function Pdf_Video() {
   return (
     <Layout>
       <div className='flex pt-24 justify-around '>
-        <Button className='p-4 border-2 font-bold hover:text-white hover:bg-red-600 duration-300  border-red-600 w-[40%] rounded-lg'>PDF</Button>
-        <Button className='p-4 border-2 font-bold hover:text-white hover:bg-red-600 duration-300  border-red-600 w-[40%] rounded-lg'>Videos</Button>
+        <Button className='p-4 border-2 font-bold hover:text-white hover:border-b-2 duration-300   w-[40%] rounded-lg'>PDF</Button>
+        <Button className='p-4 border-2 font-bold hover:text-white hover:border-b-2 duration-300   w-[40%] rounded-lg'>Videos</Button>
       </div>
       
     </Layout>
