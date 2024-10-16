@@ -38,7 +38,7 @@ const DashboardSection = () => {
    },[auth])
 
   return (
-    <div className={`${auth?.token ? "flex" : "hidden" } justify-between bg-white py-8 px-4  gap-x-4 h-[250px]`}>
+    <div className={`${auth?.token ? "flex" : "hidden" } justify-between bg-white py-8 px-4  gap-x-4 h-[220px]`}>
       {/* Wallet Section */}
       <div className="bg-red-600 text-white rounded-t-lg rounded-b-md p-4 text-center w-[45%] relative h-24">
         
@@ -64,7 +64,7 @@ const DashboardSection = () => {
       </div> */}
 
       {/* My Lead Section */}
-      <div className="bg-red-600 text-white rounded-t-lg rounded-b-md p-4 text-center w-[45%] relative h-24">
+       <div className="bg-red-600 text-white rounded-t-lg rounded-b-md p-4 text-center w-[45%] relative h-24">
         
         <h3 className="text-lg mb-4">My Lead</h3>
         <div className="text-3xl bg-white rounded-[50%] w-[60%] sm:w-[30%] p-2 m-auto">

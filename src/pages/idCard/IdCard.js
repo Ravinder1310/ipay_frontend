@@ -81,7 +81,7 @@ const IdCard = () => {
                 <tr>
                   <th className="text-left">Status:</th>
                   <th className="text-center">
-                    {user?.isActive ? "Activated" : "Free"}
+                    {user?.active ? "Activated" : "Free"}
                   </th>
                 </tr>
                 <tr>

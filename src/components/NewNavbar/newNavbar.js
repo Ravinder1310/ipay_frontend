@@ -11,7 +11,7 @@ import {
 } from "@chakra-ui/react";
 import { useAuth } from "../../context/auth";
 import {
-  FaShoppingCart ,
+  FaShoppingCart,
   FaHome,
   FaIdCard,
   FaEdit,
@@ -94,24 +94,13 @@ const NewNavbar = () => {
       >
         {/* <img src='/images/main_logo.png' className='w-20 h-14 cursor-pointer' alt='error' onClick={() => { navigate("/") }} /> */}
         <div className="flex items-center gap-4">
-        <img
-          src="/images/dark.png"
-          className="w-10 h-8 cursor-pointer"
-          alt="error"
-          onClick={toggleDrawer}
-        />
-        <div className="border-2 border-red-500 rounded-lg w-[210px] h-[60px] flex items-center px-2 py-4 bg-white"  onClick={() => {navigate('/')}}>
-      {/* Left side with the "Z" logo */}
-      <div className="">
-        <FaShoppingCart className="text-red-500 text-xl" />
-      </div>
-
-      {/* Right side with text and icon */}
-      <div className="ml-4 text-left">
-        <div className="text-red-500 font-extrabold text-lg">I-BAZAAR</div>
-        <div className="text-red-500 text-sm">#Cashback Har Bar 🛍️</div>
-      </div>
-    </div>
+          <img
+            src="/images/dark.png"
+            className="w-10 h-8 cursor-pointer"
+            alt="error"
+            onClick={toggleDrawer}
+          />
+          <img onClick={() => {navigate("/")}} src="/images/ban.png" className="w-[95%] m-auto h-[50px]" alt="error"/>
         </div>
 
         <img

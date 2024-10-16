@@ -41,6 +41,9 @@ import AllWithdrawRequest from "./pages/Admin/AllWithdrawRequest/AllWithdrawRequ
 import GetCustomer from './components/payout/GetCustomer.js';
 import FundTransfer2 from './components/payout/FundTransfer.js';
 import IdCard from './pages/idCard/IdCard.js';
+import Zoom from './pages/zoom/zoom.js';
+import QrCode from './pages/qrCode/QrCode.js';
+import PrimeMembershipCard from './pages/primeMember/PrimeMember.js';
 
 function App() {
   return (
@@ -65,7 +68,10 @@ function App() {
         <Route path='user/account-balance' element={<AccountBalance/>}/>
         <Route path='user/level-income' element={<LevelIncomeTrxn/>}/>
         <Route path='user/matching-income' element={<MatchingIncome/>}/>
+        <Route path='user/prime-details' element={<PrimeMembershipCard/>}/>
         <Route path='user/tree' element={<UserTree/>}/>
+        <Route path='user/zoom-meeting' element={<Zoom/>}/>
+        <Route path='user/qr-code' element={<QrCode/>}/>
         <Route path='user/packages' element={<Package/>}/>
         <Route path='user/my-profile' element={<MyProfile/>}/>
         <Route path='user/package-details' element={<Package_Info/>}/>
