@@ -33,10 +33,10 @@ const ImageSlider = () => {
   }, [currentIndex]);
 
   return (
-    <div className={`relative w-[90%] mb-6 sm:h-[340px] rounded-lg overflow-hidden mx-auto ${auth?.token ? "sm:mt-18" : "sm:mt-0 pt-6"}`}>
+    <div className={`relative w-[95%] mb-6 sm:h-[340px] rounded-lg overflow-hidden mx-auto ${auth?.token ? "sm:mt-18" : "sm:mt-0 pt-6"}`}>
     {/* Slider Images */}
     <div
-      className={`flex transition-transform duration-1000 ease-in-out sm:mt-20 ${auth?.token ? "sm:mt-18 mt-20" : "sm:mt-0 mt-16"}`}
+      className={`flex transition-transform duration-1000 ease-in-out sm:mt-20 ${auth?.token ? "sm:mt-18 mt-[70px]" : "sm:mt-0 mt-16"}`}
       style={{ transform: `translateX(-${currentIndex * 100}%)`}}
     > 
       {images.map((image, index) => (
