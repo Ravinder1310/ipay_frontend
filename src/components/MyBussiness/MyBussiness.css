@@ -1,0 +1,17 @@
+.scrolling-text {
+    width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    box-sizing: border-box;
+    animation: scroll-text 10s linear infinite;
+  }
+  
+  @keyframes scroll-text {
+    from {
+      transform: translateX(100%);
+    }
+    to {
+      transform: translateX(-100%);
+    }
+  }
+  

@@ -45,6 +45,7 @@ import Zoom from './pages/zoom/zoom.js';
 import QrCode from './pages/qrCode/QrCode.js';
 import PrimeMembershipCard from './pages/primeMember/PrimeMember.js';
 import Pdf_Video from './components/Pdf&Video/Pdf_Video.js';
+import MyBusiness from './components/MyBussiness/MyBussiness.js';
 
 function App() {
   return (
@@ -53,6 +54,7 @@ function App() {
       <div className='wrapper'>
      <Routes>
       <Route path="/users/" element={<PrivateRoute/>}>
+        <Route path='user/my-bussiness' element={<MyBusiness/>}/>
         <Route path='user/fund-transfer' element={<FundTransfer/>}/>
         <Route path='user/fund-transfers' element={<FundTransfer2/>}/>
         <Route path='user/add-beneficiary' element={<AddBeneficiary/>}/>
